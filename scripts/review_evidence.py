@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from calibration import require_iaa
+from calibration import calibration_decisions_match, require_iaa
 from common import IMAGES_DIR, QC_DIR, ROOT, digest, final_taxonomy_path, load_taxonomy, rel, require_valid_labels
 
 LABELS_PATH = QC_DIR / "labels_calibrated.json"
@@ -31,8 +31,25 @@ def current_batch():
         raise ValueError("CSV nhãn cuối lệch batch_manifest.json. Chạy build_final.py.")
     for name, expected in manifest["inputs_sha256"].items():
         path = ROOT / name
-        if not path.is_file() or digest(path) != expected:
+        if not path.is_file():
             raise ValueError(f"Đầu vào lô thiếu hoặc đã đổi: {name}. Chạy build_final.py.")
+        if digest(path) != expected:
+            decisions_name = rel(QC_DIR / "calibration_decisions.csv")
+            snapshots = sorted((QC_DIR / "reviews").glob("round-*/calibration_decisions_snapshot.csv"))
+            valid_snapshot = False
+            if name == decisions_name:
+                for snapshot in snapshots:
+                    snapshot_manifest = json.loads(
+                        snapshot.with_name("review_manifest.json").read_text(encoding="utf-8")
+                    )
+                    if (
+                        snapshot_manifest.get("calibration_decisions_sha256") == digest(snapshot)
+                        and calibration_decisions_match(path, snapshot)
+                    ):
+                        valid_snapshot = True
+                        break
+            if not valid_snapshot:
+                raise ValueError(f"Đầu vào lô thiếu hoặc đã đổi: {name}. Chạy build_final.py.")
     entries = {entry["file"]: entry["sha256"] for entry in manifest["images"]}
     if entries.keys() != labels.images.keys() or any(
         digest(IMAGES_DIR / name) != expected for name, expected in entries.items()

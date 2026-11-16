@@ -5,6 +5,7 @@ import argparse
 from collections import Counter, defaultdict
 import json
 
+from calibration import calibration_decisions_match
 from common import MEMBER_RE, QC_DIR, digest, read_csv
 from review_evidence import LABELS_PATH, MANIFEST_PATH, current_batch, round_dir
 
@@ -19,11 +20,14 @@ def checked_round(directory, number):
         ("labels_sha256", LABELS_PATH, directory / "labels_snapshot.json"),
         ("batch_manifest_sha256", MANIFEST_PATH, directory / "batch_manifest_snapshot.json"),
         ("sample_sha256", sample_path, sample_path),
-        ("calibration_decisions_sha256", QC_DIR / "calibration_decisions.csv",
-         directory / "calibration_decisions_snapshot.csv"),
     ):
         if metadata[key] != digest(path) or metadata[key] != digest(snapshot):
             raise ValueError(f"Vòng duyệt và {path.name} không cùng phiên bản. Mở vòng mới.")
+    calibration_snapshot = directory / "calibration_decisions_snapshot.csv"
+    if metadata["calibration_decisions_sha256"] != digest(calibration_snapshot):
+        raise ValueError(f"Vòng duyệt và {calibration_snapshot.name} không cùng phiên bản. Mở vòng mới.")
+    if not calibration_decisions_match(QC_DIR / "calibration_decisions.csv", calibration_snapshot):
+        raise ValueError("Quyết định calibration đã đổi trong vòng QC. Mở vòng mới.")
     if metadata["round"] != number or metadata["mode"] not in {"full", "demo"}:
         raise ValueError("Thông tin vòng QC không hợp lệ.")
     sample = read_csv(sample_path)
