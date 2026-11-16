@@ -1,9 +1,9 @@
 # Thông tin nhóm
 
-- Tên nhóm:
-- Mã thành viên (ba chữ số):
-- Người điều phối:
-- Người review bản cuối:
+- Tên nhóm: G0001
+- Mã thành viên (ba chữ số): 111, 222, 333
+- Người điều phối: 111
+- Người review bản cuối: 111
 - Commit chốt bài (điền ở kênh nộp sau khi commit):
 
 ## Kết quả tóm tắt (điền cuối bài)
