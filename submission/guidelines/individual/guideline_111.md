@@ -1,4 +1,4 @@
-# Guideline gán nhãn — bản cá nhân Pha 1 — mã <mã>
+# Guideline gán nhãn — bản cá nhân Pha 1 — mã 111
 
 - Phiên bản: v0.1-cá-nhân
 - Ngày: 2026-11-16
