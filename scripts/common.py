@@ -140,7 +140,14 @@ def xywh_to_xyxy(b) -> Box:
 
 
 def xyxy_to_xywh(b: Box) -> List[float]:
-    return [round(b[0], 2), round(b[1], 2), round(b[2] - b[0], 2), round(b[3] - b[1], 2)]
+    # Sửa lỗi làm tròn (G0001, Pha 5): làm tròn x và w riêng rẽ có thể cho x + w vượt mép phải/dưới 0,01 px.
+    x, y = round(b[0], 2), round(b[1], 2)
+    w, h = round(round(b[2], 2) - x, 2), round(round(b[3], 2) - y, 2)
+    if x + w > round(b[2], 2):
+        w = round(w - 0.01, 2)
+    if y + h > round(b[3], 2):
+        h = round(h - 0.01, 2)
+    return [x, y, w, h]
 
 
 def area(b: Box) -> float:
