@@ -116,7 +116,7 @@ python scripts/qc_sample.py --round 1
 python scripts/qc_report.py --round 1
 ```
 
-Giữa hai lệnh: mở ảnh trong `work/review/round-01/`, điền `submission/qc/reviews/round-01/qc_review.csv` (cách điền: [scripts/README.md](scripts/README.md#phiếu-qc)).
+Sau khi tạo vòng, chỉ cập nhật cột `kiem_lai` trong `calibration_decisions.csv` để ghi kết quả kiểm thực tế; không sửa các quyết định khác. Giữa hai lệnh: mở ảnh trong `work/review/round-01/`, điền `submission/qc/reviews/round-01/qc_review.csv` (cách điền: [scripts/README.md](scripts/README.md#phiếu-qc)).
 Mặc định **duyệt toàn bộ lô**. Người kiểm nên khác người sửa; nhóm 2 người thì đổi vai và ghi rõ.
 
 Kết quả gợi ý, người kiểm xác nhận:
