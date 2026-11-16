@@ -6,8 +6,11 @@
     {"name": "truck", "definition": "Xe có khoang chở hàng tách khỏi cabin hoặc để hở: tải nhỏ, tải thùng, bán tải kể cả có nắp thùng, đầu kéo kèm rơ-moóc."},
     {"name": "van", "definition": "Xe thân liền khối kín cỡ nhỏ: panel van hoặc xe khách tối đa 16 chỗ; xe khách lớn hơn ngoài taxonomy."},
     {"name": "motorcycle", "definition": "Xe hai bánh có động cơ: xe máy, tay ga, moped, mô tô; xe gắn sidecar là một xe một box; xe đạp, xích lô, tuk-tuk không phải."},
-    {"name": "person", "definition": "Người thật nhìn thấy trực tiếp: đi bộ, đi xe máy hoặc xe đạp, ngồi ở chỗ hở; không gán tượng, ma-nơ-canh, hình in, phản chiếu, người sau kính xe kín."},
-    {"name": "ignore_region", "definition": "Vùng bỏ qua (không phải vật): xe có động cơ ngoài taxonomy (xe buýt, tuk-tuk, xe ba bánh; mỗi xe một vùng), cụm vật thật quá nhỏ hoặc quá dày không tách được, vệt nhoè; bỏ sót ở đây không tính là lỗi."}
+    {"name": "bicycle", "definition": "Xe chạy bằng sức người: xe đạp, xe đạp thồ có hàng, xích lô (xe đạp ba bánh chở khách); box ôm thân xe, người đi là rider."},
+    {"name": "three_wheeler", "definition": "Xe ba bánh có động cơ: tuk-tuk, auto-rickshaw, xe ba gác máy; xích lô đạp là bicycle."},
+    {"name": "pedestrian", "definition": "Người thật không ở trên phương tiện: đi bộ, đứng, ngồi, đẩy xe, gánh hay xách hàng; box bao cả đồ mang theo; không gán tượng, ma-nơ-canh, hình in, phản chiếu, người sau kính xe kín."},
+    {"name": "rider", "definition": "Người thật đang lái hoặc ngồi trên phương tiện hở: xe máy, xe đạp, xích lô, tuk-tuk, ô tô mui trần, thùng xe; mỗi người một box, bao cả đồ mang theo; không gán người trong khoang kín."},
+    {"name": "ignore_region", "definition": "Vùng bỏ qua (không phải vật): xe buýt hoặc xe khách lớn ngoài taxonomy (mỗi xe một vùng), cụm vật thật quá nhỏ hoặc quá dày không tách được, vệt nhoè; bỏ sót ở đây không tính là lỗi."}
   ],
   "attributes": [
     {"name": "occluded_level", "type": "select", "values": ["0", "1", "2", "3"], "default": "0"},
