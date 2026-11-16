@@ -1,10 +1,10 @@
-# Guideline gán nhãn — v0.1-draft — 333
+# Guideline gán nhãn — v0.2-draft — 333
 
 > **Trạng thái:** Bản nháp guideline cá nhân sau khi rà 40 ảnh `img_001`–`img_040`.
 > Người gán phải tự kiểm lại từng quyết định trước khi dùng. Đây chưa phải guideline nhóm v1.0
 > và không thay thế bước họp thống nhất của nhóm.
 
-- Phiên bản: `v0.1-draft`
+- Phiên bản: `v0.2-draft`
 - Ngày: 2026-11-16
 - Người viết: `333`
 - Người duyệt: Chưa duyệt
@@ -14,7 +14,9 @@
 ## 1. Mục tiêu
 
 Tạo dữ liệu để huấn luyện và đánh giá mô hình phát hiện **người** và một số **phương tiện đường bộ**
-(`car`, `truck`, `van`, `motorcycle`) trong ảnh đường phố 2D. Kết quả có thể được dùng cho quan sát
+(`car`, `truck`, `van`, `motorcycle`, `bicycle`, `three_wheeler`, `bus`) trong ảnh đường phố 2D.
+Ba lớp `bicycle`, `three_wheeler`, `bus` là đề xuất mở rộng của guideline cá nhân này; nhóm phải chốt
+và thêm chúng vào `submission/taxonomy.json` trước khi sinh cấu hình CVAT. Kết quả có thể được dùng cho quan sát
 giao thông hoặc hỗ trợ nhận biết vật cản, vì vậy các lỗi bỏ sót người/phương tiện, gán nhầm lớp,
 hoặc vẽ box sai đáng kể đều có thể làm mô hình học sai vị trí và loại đối tượng.
 
@@ -35,12 +37,15 @@ biển quảng cáo, phản chiếu, tượng, ma-nơ-canh và đồ chơi khôn
 
 | Lớp | Định nghĩa thao tác | Ví dụ trong bộ ảnh | Phản ví dụ / dễ nhầm |
 |---|---|---|---|
-| `car` | Xe cơ giới chở người, thân kín, thường là sedan, hatchback, wagon, SUV, MPV hoặc taxi; xe thật vẫn gán khi đang đỗ hoặc trưng bày. | Sedan/SUV ở `img_012`, `img_015`; taxi ở `img_040`; các ô tô thật trong bảo tàng ở `img_024`. | Pickup có thùng rời là `truck`; van thương mại là `van`; bus, tuk-tuk, xe đồ chơi, tượng xe không gán. |
+| `car` | Xe cơ giới chở người, thân kín, thường là sedan, hatchback, wagon, SUV, MPV hoặc taxi; xe thật vẫn gán khi đang đỗ hoặc trưng bày. | Sedan/SUV ở `img_012`, `img_015`; taxi ở `img_040`; các ô tô thật trong bảo tàng ở `img_024`. | Pickup có thùng rời là `truck`; van thương mại là `van`; xe chở khách nhiều chỗ là `bus`; tuk-tuk là `three_wheeler`; xe đồ chơi và tượng xe không gán. |
 | `truck` | Xe cơ giới có chức năng chở hàng rõ ràng, gồm pickup thùng hở, xe tải thùng rời, xe tải nhẹ và đầu xe kèm thân/rơ-moóc đang gắn. | Pickup ở `img_001`, `img_012`, `img_028`, `img_037`; xe chở ô tô ở `img_002`; xe tải nhẹ ở `img_036`. | SUV/MPV thân kín là `car`; panel van liền khối là `van`; tượng pickup `img_027` không gán. |
-| `van` | Xe thân kín cao, khoang người/hàng liền với cabin và có hình dáng van/panel van thương mại cỡ nhỏ hoặc vừa. | Van trắng ở `img_016`; panel/service van nếu nhìn thấy rõ ở `img_037`. | Pickup có nắp thùng vẫn là `truck`; SUV/minivan chở người có dáng ô tô là `car`; bus/minibus lớn không gán. |
-| `motorcycle` | Xe cơ giới hai bánh, gồm mô tô, scooter và moped; xe máy gắn sidecar được coi là một xe và box gồm cả sidecar. | Scooter/xe máy ở `img_003`, `img_005`, `img_006`, `img_008`, `img_010`, `img_026`, `img_029`; xe sidecar ở `img_022`. | Xe đạp/cyclo không gán; tuk-tuk/auto-rickshaw không gán; xe máy đồ chơi không gán. |
+| `van` | Xe thân kín cao, khoang người/hàng liền với cabin và có hình dáng van/panel van thương mại cỡ nhỏ hoặc vừa. | Van trắng ở `img_016`; panel/service van nếu nhìn thấy rõ ở `img_037`. | Pickup có nắp thùng vẫn là `truck`; SUV/minivan chở người có dáng ô tô là `car`; xe chở khách nhiều hàng ghế là `bus`. |
+| `motorcycle` | Xe cơ giới hai bánh, gồm mô tô, scooter và moped; xe máy gắn sidecar được coi là một xe và box gồm cả sidecar. | Scooter/xe máy ở `img_003`, `img_005`, `img_006`, `img_008`, `img_010`, `img_026`, `img_029`; xe sidecar ở `img_022`. | Xe đạp/xích lô đạp là `bicycle`; tuk-tuk/auto-rickshaw là `three_wheeler`; xe máy đồ chơi không gán. |
+| `bicycle` | Phương tiện chạy chủ yếu bằng bàn đạp, có hai hoặc ba bánh; gồm xe đạp thường và xích lô/cyclo đạp ba bánh. Box xích lô bao toàn bộ khung xe, bánh và khoang ghế gắn liền. | Xe đạp ở `img_003`, `img_006`, `img_029`, `img_034`, `img_039`; xích lô ở `img_023`. | Xe máy/scooter là `motorcycle`; tuk-tuk có động cơ và cabin là `three_wheeler`; người và hàng trên xe có box riêng hoặc không thuộc box xe. |
+| `three_wheeler` | Phương tiện cơ giới ba bánh có cabin/mui và khoang chở người hoặc hàng, gồm tuk-tuk và auto-rickshaw. | Tuk-tuk ở `img_004`, `img_016`, `img_035`, `img_040`. | Xích lô đạp là `bicycle`; xe máy gắn sidecar là `motorcycle`; ô tô bốn bánh là `car`. |
+| `bus` | Xe cơ giới được thiết kế chở nhiều hành khách, có thân dài/cao và nhiều hàng ghế; gồm minibus, city bus và coach khi nhận diện được chắc chắn. | Minibus ở `img_009`; bus ở `img_037`, `img_040`. | Van nhỏ/ít hàng ghế là `van`; MPV/SUV là `car`; xe tải chở hàng là `truck`. |
 | `person` | Một người thật nhìn thấy trực tiếp, bất kể đang đi bộ, đứng, ngồi, lái xe hay ngồi trên phương tiện. Mỗi người một box. | Người đi bộ `img_014`, người trên xe máy `img_026`, tài xế xe lạ mắt `img_019`, đám đông `img_032`. | Tượng `img_017`, ma-nơ-canh `img_033`, người trên billboard `img_018`, mascot/đồ chơi `img_019` và `img_038`, người chỉ xuất hiện trong phản chiếu không gán. |
-| `ignore_region` | Một **vùng ảnh**, không phải một vật. Chỉ dùng khi vùng chứa nhiều vật mục tiêu chồng lấp/dày đặc đến mức không thể tách từng instance một cách đáng tin cậy, hoặc vùng quá mờ khiến mọi ranh giới instance đều không xác định được. | Có thể dùng cho phần lõi không thể tách của dòng xe/người rất dày ở `img_021` hoặc bãi xe `img_030`, sau khi đã gán riêng các vật tách được. | Không dùng thay cho một bus, tuk-tuk, xe đạp hay vật ngoài taxonomy; không dùng để che lỗi khó; không bao các vật đã có box riêng. |
+| `ignore_region` | Một **vùng ảnh**, không phải một vật. Chỉ dùng khi vùng chứa nhiều vật mục tiêu chồng lấp/dày đặc đến mức không thể tách từng instance một cách đáng tin cậy, hoặc vùng quá mờ khiến mọi ranh giới instance đều không xác định được. | Có thể dùng cho phần lõi không thể tách của dòng xe/người rất dày ở `img_021` hoặc bãi xe `img_030`, sau khi đã gán riêng các vật tách được. | Không dùng thay cho một `bus`, `three_wheeler`, `bicycle` hay vật khó; không dùng để che lỗi; không bao các vật đã có box riêng. |
 
 ### 2.2. Quy tắc chọn lớp
 
@@ -52,9 +57,10 @@ biển quảng cáo, phản chiếu, tượng, ma-nơ-canh và đồ chơi khôn
   cabin + thùng hàng tách rõ là `truck`, kể cả khi pickup có nắp che thùng.
 - **R-04 — Người và xe:** người lái/ngồi trên xe vẫn có box `person` riêng; phương tiện có box riêng.
   Các box được phép chồng nhau.
-- **R-05 — Ngoài taxonomy:** bus/minibus lớn, xe đạp, cyclo, tuk-tuk/auto-rickshaw, xe ngựa và loài vật
-  không thuộc các lớp hiện có nên **không gán box**. Nếu trong phương tiện đó có người thật nhìn thấy rõ,
-  vẫn gán từng `person` đủ điều kiện.
+- **R-05 — Bus, xe đạp và xe cơ giới ba bánh:** gán minibus/city bus/coach là `bus`; xe đạp hai bánh
+  và xích lô đạp ba bánh là `bicycle`; tuk-tuk/auto-rickshaw có động cơ là `three_wheeler`. Người thật
+  lái hoặc ngồi trên các phương tiện này vẫn nhận box `person` riêng. Xe ngựa và loài vật ngoài taxonomy
+  nên không gán box.
 - **R-06 — Vật thật và hình biểu diễn:** không gán tượng, ma-nơ-canh, đồ chơi/mô hình, hình in, màn hình,
   billboard, tranh hoặc phản chiếu. Xe thật đang đỗ/trưng bày vẫn gán; vật chỉ có hình dáng xe nhưng là
   tượng/đồ trang trí thì không gán.
@@ -135,12 +141,18 @@ Một vật nằm sát mép nhưng vẫn nhìn thấy hết là `no`. `truncated
 - Xe máy sidecar `img_022`: coi xe máy và sidecar gắn cố định là một instance `motorcycle`, một box chung.
 - Giá chở đồ, thùng gắn cố định hoặc mui xe được tính vào phương tiện; tải rời, người và động vật không tính.
 
-### 3.4. Ngoài phạm vi, vật giả và cảnh phản chiếu
+### 3.4. Lớp mở rộng, vật ngoài phạm vi và cảnh phản chiếu
 
-- Tuk-tuk ở `img_004`, `img_016`, `img_035`, `img_040` có ba bánh và cabin chở khách, không khớp
-  `motorcycle`, `car`, `truck` hay `van`; không gán phương tiện và không dùng `ignore_region` cho từng xe.
-- Bus/minibus lớn ở `img_009`, `img_037`, `img_040` không có lớp tương ứng; không gán.
-- Xe đạp/cyclo ở `img_003`, `img_023`, `img_029`, `img_034`, `img_039` không gán; người thật trên xe vẫn gán.
+- Tuk-tuk/auto-rickshaw ở `img_004`, `img_016`, `img_035`, `img_040` nhận một box
+  `three_wheeler` cho mỗi xe. Box bao thân xe, cabin/mui, bánh và khoang chở gắn liền; không bao người
+  hoặc hàng rời. Không gộp nhiều tuk-tuk vào một box.
+- Minibus ở `img_009` và bus ở `img_037`, `img_040` nhận lớp `bus`. Mỗi xe một box, kể cả khi chỉ
+  nhìn thấy một phần nhưng vẫn nhận diện chắc chắn và phần nhìn thấy cao ít nhất 20 px.
+- Xe đạp ở `img_003`, `img_006`, `img_029`, `img_034`, `img_039` nhận lớp `bicycle`. Xích lô ở
+  `img_023` cũng là `bicycle` vì vận hành bằng bàn đạp; box bao toàn bộ khung, bánh và khoang ghế gắn liền.
+  Người thật lái/ngồi trên xe vẫn nhận box `person` riêng.
+- Xe máy gắn sidecar ở `img_022` vẫn là `motorcycle`, không phải `three_wheeler`, vì cấu trúc chính là
+  xe máy hai bánh với thùng phụ gắn bên cạnh.
 - Tượng/người giả ở `img_011`, `img_017`, `img_027`, `img_028`, `img_033` không gán.
 - Đồ chơi/mô hình xe ở `img_038` không gán.
 - `img_020` chỉ cho thấy phương tiện qua gương chiếu hậu: không gán vật trong gương. Ở `img_031`, gán
@@ -162,35 +174,35 @@ Một vật nằm sát mép nhưng vẫn nhìn thấy hết là `no`. `truncated
 |---|---|---|---|---|
 | `img_001` | Pickup và nhiều người, một số người bị xe che. | R-02, R-08 | Pickup=`truck`; mỗi người thật đủ 20 px một `person`; đặt occlusion riêng. | Thùng hàng tách cabin; người là instance độc lập. |
 | `img_002` | Xe tải chở nhiều ô tô. | R-07 | Một `truck` cho tổ hợp vận chuyển; mỗi ô tô thật đủ 20 px một `car`. | Xe được chở vẫn là vật thật; khung chở chỉ gây che khuất. |
-| `img_003` | Người, xe đạp và xe máy xen nhau. | R-04, R-05 | Gán người và motorcycle; không gán xe đạp. | Xe đạp ngoài taxonomy. |
-| `img_004` | Hai tuk-tuk và tài xế. | R-05 | Không gán tuk-tuk; gán người thật nhìn thấy rõ. | Không có lớp xe ba bánh chở khách. |
-| `img_009` | Minibus/bus và xe máy đỗ. | R-05 | Không gán bus; gán motorcycle/person đủ ngưỡng. | Bus ngoài taxonomy. |
+| `img_003` | Người, xe đạp và xe máy xen nhau. | R-04, R-05 | Gán từng `person`, `bicycle`, `motorcycle` đủ ngưỡng. | Ba loại là các instance riêng; box được phép chồng khi người ngồi trên xe. |
+| `img_004` | Hai tuk-tuk và tài xế. | R-04, R-05 | Mỗi tuk-tuk một `three_wheeler`; mỗi người thật nhìn thấy rõ một `person`. | Xe cơ giới ba bánh có cabin thuộc lớp riêng, không ép vào motorcycle/car. |
+| `img_009` | Minibus/bus và xe máy đỗ. | R-05 | Minibus=`bus`; gán thêm `motorcycle`/`person` đủ ngưỡng. | Minibus có thân và nhiều hàng ghế chở khách. |
 | `img_011` | Tác phẩm điêu khắc cơ khí giống người/xe. | R-06 | Không gán tác phẩm; chỉ gán người thật ở hậu cảnh nếu đạt 20 px. | Vật biểu diễn không phải mục tiêu thật. |
 | `img_012` | Pickup chở hàng, SUV và xe khác che nhau. | R-02, R-12 | Pickup=`truck`, SUV=`car`; box pickup không bao hàng nhô khỏi thân. | Phân lớp theo cấu tạo và mục đích thân xe. |
 | `img_014` | Người rõ, xe máy nhòe do chuyển động. | R-04, R-08 | Gán hai người; gán xe máy nhòe nếu biên đủ xác định, nếu không ghi issue. | Blur không phải occlusion nhưng có thể làm biên không đáng tin. |
 | `img_015` | Nhiều ô tô bị cắt bởi mép ảnh. | R-08 | Mỗi xe đủ ngưỡng một `car`, box phần nhìn thấy, `truncated=yes`. | Vật tiếp tục ra ngoài ảnh. |
-| `img_016` | Tuk-tuk, van, pickup và scooter. | R-02, R-03, R-05 | Không gán tuk-tuk; van=`van`; pickup=`truck`; scooter=`motorcycle`; người riêng. | Tránh ép tuk-tuk vào lớp gần nhất. |
+| `img_016` | Tuk-tuk, van, pickup và scooter. | R-02, R-03, R-05 | Tuk-tuk=`three_wheeler`; van=`van`; pickup=`truck`; scooter=`motorcycle`; người riêng. | Phân lớp theo cấu trúc và nguồn truyền động của từng xe. |
 | `img_017` | Tượng người cưỡi ngựa. | R-06 | Không gán `person`. | Tượng không phải người thật. |
 | `img_018` | Người in trên billboard và ô tô thật sau hàng rào. | R-06, R-11 | Không gán người trên biển; gán xe thật đủ 20 px, với occlusion do hàng rào. | Phân biệt hình in với vật thật. |
 | `img_019` | Xe tạo hình giả tưởng, tài xế thật và mascot chuột. | R-06 | Xe có biển bánh và đang vận hành=`car`; tài xế=`person`; mascot không gán. | Chức năng vật thật quyết định lớp, không phải hình thức trang trí. |
 | `img_020` | Xe chỉ xuất hiện trong gương chiếu hậu. | R-06 | Không gán xe phản chiếu. | Không phải vật nhìn trực tiếp trong cảnh ảnh. |
 | `img_021` | Dòng người và xe máy cực dày. | R-10, R-11 | Gán riêng instance gần/tách được; dùng `ignore_region` cho lõi không tách được; bỏ vật dưới 20 px. | Không được gộp tùy tiện nhưng cũng không đoán instance. |
 | `img_022` | Xe máy gắn sidecar trong ảnh cũ. | R-01 | Một box `motorcycle` gồm xe và sidecar. | Sidecar là bộ phận gắn của một phương tiện. |
-| `img_023` | Car, motorcycle, cyclo và người lái. | R-04, R-05 | Gán car, motorcycle và người; không gán cyclo. | Cyclo là xe đạp ba bánh ngoài taxonomy. |
+| `img_023` | Car, motorcycle, xích lô và người lái. | R-04, R-05 | Gán `car`, `motorcycle`, `bicycle` cho xích lô và từng `person` đủ ngưỡng. | Xích lô ba bánh nhưng vận hành bằng bàn đạp nên thuộc bicycle. |
 | `img_024` | Xe thật trưng bày và vật hình xe màu vàng trên nóc. | R-06 | Gán các ô tô thật; vật vàng thiếu cabin/nội thất rõ ràng: không gán và ghi reviewer kiểm lại nếu còn nghi ngờ. | Xe thật vẫn là mục tiêu; mô hình/prop không phải mục tiêu. |
 | `img_026` | Hai người trên một xe máy. | R-04 | Một `motorcycle` và hai `person`; box được chồng nhau. | Mỗi người là một instance độc lập. |
 | `img_027` | Tượng/mộ tạo hình pickup. | R-06 | Không gán `truck`. | Tượng không phải phương tiện thật. |
 | `img_028` | Pickup thật chở tượng ngựa, có car phía sau. | R-02, R-06 | Pickup=`truck`; car nền=`car`; tượng ngựa không gán. | Tách vật thật khỏi tải trang trí. |
-| `img_029` | Người mang thanh dài, xe máy và xe đạp. | R-05, R-12 | Người riêng; motorcycle riêng; không gán xe đạp; box người không bao hết thanh dài. | Thanh là vật mang theo, không phải cơ thể. |
+| `img_029` | Người mang thanh dài, xe máy và xe đạp. | R-05, R-12 | Người, `motorcycle` và `bicycle` là các box riêng; box người không bao hết thanh dài. | Thanh là vật mang theo, không phải cơ thể. |
 | `img_030` | Bãi xe máy dày đặc và chồng lấp. | R-10 | Gán từng motorcycle tách được; vùng lõi không tách được dùng `ignore_region`. | Tránh box suy đoán hoặc một box gộp nhiều xe. |
 | `img_031` | Cảnh đêm, xe thật và phản chiếu trên đường ướt. | R-06 | Gán vật thật đủ ngưỡng; không gán ảnh phản chiếu trên mặt đường. | Phản chiếu không phải instance mới. |
 | `img_032` | Đám đông ở trạm và car bị cắt mép. | R-10, R-11 | Gán từng người đủ 20 px; car mép trái `truncated=yes`; vùng người không tách được có thể ignore. | Dùng cùng ngưỡng kích thước và quy tắc mép ảnh. |
 | `img_033` | Ma-nơ-canh, hình quảng cáo và phản chiếu xe. | R-06 | Không gán person/vehicle. | Tất cả mục tiêu giống thật đều là biểu diễn hoặc phản chiếu. |
-| `img_035` | Tuk-tuk, motorcycle, car và người. | R-05 | Không gán tuk-tuk; gán motorcycle, car và người đủ ngưỡng. | Không ép xe ba bánh vào motorcycle. |
+| `img_035` | Tuk-tuk, motorcycle, car và người. | R-04, R-05 | Mỗi tuk-tuk=`three_wheeler`; gán thêm motorcycle, car và người đủ ngưỡng. | Xe cơ giới ba bánh có lớp riêng. |
 | `img_036` | Xe tải nhẹ có cabin và thùng kín tách biệt. | R-03 | `truck`. | Thùng hàng tách cabin, không phải van liền khối. |
-| `img_037` | Pickup có canopy, bus và người đi bộ. | R-02, R-05 | Pickup=`truck`; bus không gán; người đủ ngưỡng=`person`. | Canopy không biến pickup thành van. |
+| `img_037` | Pickup có canopy, hai bus và người đi bộ. | R-02, R-05 | Pickup=`truck`; mỗi bus nhìn thấy được một box `bus`; người đủ ngưỡng=`person`. | Canopy không biến pickup thành van; bus là lớp mục tiêu đề xuất. |
 | `img_038` | Tủ xe mô hình và đồ chơi. | R-06 | Không gán car/person. | Đồ chơi không phải vật thật theo mục tiêu. |
-| `img_040` | Người tiền cảnh, taxi/car, tuk-tuk và bus. | R-05 | Gán người và car thật; không gán tuk-tuk/bus; box người tiền cảnh theo phần thấy được. | Cùng nguyên tắc ngoài taxonomy và mép ảnh. |
+| `img_040` | Người tiền cảnh, taxi/car, tuk-tuk và bus. | R-04, R-05 | Gán `person`, `car`, `three_wheeler`, `bus` đủ ngưỡng; box người tiền cảnh theo phần thấy được. | Mỗi loại phương tiện nhận đúng lớp riêng; xử lý che khuất độc lập. |
 
 ### Checklist rà đủ 40 ảnh
 
@@ -201,44 +213,44 @@ không bỏ qua ca biên khi mở từng ảnh ở kích thước gốc.
 |---|---|
 | `img_001` | Pickup=`truck`; nhiều người bị che. |
 | `img_002` | Xe chở xe: truck và từng car riêng. |
-| `img_003` | Người/xe máy có gán; xe đạp không gán. |
-| `img_004` | Tuk-tuk không gán; người thật gán riêng. |
+| `img_003` | Gán riêng `person`, `motorcycle`, `bicycle` đủ ngưỡng. |
+| `img_004` | Mỗi tuk-tuk=`three_wheeler`; người thật gán riêng. |
 | `img_005` | Nhiều người, motorcycle và car chồng lấp; tách instance. |
-| `img_006` | Dòng motorcycle/person; xe đạp không gán; chú ý mép ảnh. |
+| `img_006` | Dòng motorcycle/person/bicycle; gán từng instance và chú ý mép ảnh. |
 | `img_007` | Phân biệt truck, pickup và car trong gara; che khuất cao. |
 | `img_008` | Nhiều motorcycle/person, một số bị cắt hoặc che. |
-| `img_009` | Bus không gán; motorcycle/person đủ ngưỡng vẫn gán. |
+| `img_009` | Minibus=`bus`; motorcycle/person đủ ngưỡng vẫn gán riêng. |
 | `img_010` | Motorcycle/person và hàng hóa; box không bao tải rời. |
 | `img_011` | Điêu khắc không gán; người thật hậu cảnh theo ngưỡng 20 px. |
 | `img_012` | Pickup=`truck`; hàng không tính vào box; car/SUV riêng. |
 | `img_013` | Cảnh đêm: chỉ gán vật đủ 20 px và nhận ra chắc chắn. |
 | `img_014` | Người thật rõ; motorcycle nhòe cần đánh giá biên box. |
 | `img_015` | Nhiều car bị cắt mép: `truncated=yes`. |
-| `img_016` | Tuk-tuk không gán; van/truck/motorcycle/person phân lớp riêng. |
+| `img_016` | Tuk-tuk=`three_wheeler`; van/truck/motorcycle/person phân lớp riêng. |
 | `img_017` | Tượng người cưỡi ngựa không gán. |
 | `img_018` | Billboard không gán; xe thật sau hàng rào có thể gán. |
 | `img_019` | Xe giả tưởng nhưng vận hành thật=`car`; người thật gán; mascot không. |
 | `img_020` | Không gán vật chỉ thấy trong gương. |
 | `img_021` | Đám đông cực dày; individual trước, ignore phần không tách được. |
 | `img_022` | Xe máy sidecar là một `motorcycle`. |
-| `img_023` | Cyclo/xe đạp không gán; car/motorcycle/person có gán. |
+| `img_023` | Xích lô=`bicycle`; car/motorcycle/person gán thành các instance riêng. |
 | `img_024` | Xe thật trưng bày có gán; prop/mô hình không gán. |
 | `img_025` | Người và xe ở xa: áp dụng đúng ngưỡng 20 px. |
 | `img_026` | Một motorcycle, hai person; các box chồng nhau. |
 | `img_027` | Tượng pickup không gán. |
 | `img_028` | Pickup thật=`truck`, tượng ngựa không, car nền có gán. |
-| `img_029` | Motorcycle/person có gán; bicycle không; thanh dài ngoài box người. |
+| `img_029` | Motorcycle/person/bicycle có gán; thanh dài ngoài box người. |
 | `img_030` | Xe máy đỗ dày: tách instance hoặc ignore lõi không phân giải. |
 | `img_031` | Gán vật thật, không gán phản chiếu trên đường ướt. |
 | `img_032` | Đám đông và car cắt mép; ngưỡng 20 px. |
 | `img_033` | Ma-nơ-canh, quảng cáo, phản chiếu: không gán. |
-| `img_034` | Person/motorcycle/car có gán; bicycle không; vật xa theo ngưỡng. |
-| `img_035` | Tuk-tuk không gán; motorcycle/car/person có gán. |
+| `img_034` | Person/motorcycle/car/bicycle có gán; vật xa theo ngưỡng. |
+| `img_035` | Tuk-tuk=`three_wheeler`; motorcycle/car/person gán riêng. |
 | `img_036` | Xe tải nhẹ thùng tách cabin=`truck`. |
-| `img_037` | Pickup canopy=`truck`; bus không; person đủ ngưỡng có gán. |
+| `img_037` | Pickup canopy=`truck`; mỗi bus=`bus`; person đủ ngưỡng có gán. |
 | `img_038` | Toàn bộ xe/người đồ chơi không gán. |
-| `img_039` | Motorcycle/person đủ ngưỡng có gán; bicycle không. |
-| `img_040` | Person/car có gán; tuk-tuk và bus không gán. |
+| `img_039` | Motorcycle/person/bicycle đủ ngưỡng có gán. |
+| `img_040` | Gán person/car/three_wheeler/bus đủ ngưỡng thành các box riêng. |
 
 ## 5. QC và phiên bản
 
@@ -273,7 +285,8 @@ hoặc mọi người cùng hiểu sai guideline.
 
 ### 5.3. Các điểm bắt buộc nhóm chốt trước v1.0
 
-- Có xác nhận tuk-tuk và bus là ngoài taxonomy, hay nhóm muốn thay đổi taxonomy.
+- Có chấp nhận ba lớp đề xuất `bicycle`, `three_wheeler`, `bus` và cập nhật đồng bộ `taxonomy.json`,
+  cấu hình CVAT hay không. Nếu nhóm không chấp nhận thì phải chốt lại cách xử lý trước khi gán độc lập.
 - `truck` có bao cả rơ-moóc đang gắn hay chỉ cabin; draft này chọn toàn tổ hợp.
 - Xe thật trưng bày và vật hình xe dạng prop ở `img_024` phân biệt theo dấu hiệu nào.
 - Khi nào đám đông chuyển từ box riêng sang `ignore_region`; reviewer cần xem `img_021`, `img_030`, `img_032`.
@@ -286,4 +299,5 @@ hoặc mọi người cùng hiểu sai guideline.
 |---|---|---|
 | `v0` | Guideline starter do giảng viên cung cấp. | Chưa xử lý ca biên. |
 | `v0.1-draft` | Định nghĩa lớp, ngưỡng thuộc tính, quy tắc box, ngoài taxonomy và rà 40 ảnh. | Chuẩn bị guideline cá nhân của mã `333`; cần người viết tự duyệt. |
+| `v0.2-draft` | Đề xuất thêm `bicycle`, `three_wheeler`, `bus`; sửa quyết định cho xe đạp, xích lô, tuk-tuk và bus. | Rà lại `img_003`, `img_004`, `img_006`, `img_009`, `img_016`, `img_023`, `img_029`, `img_034`, `img_035`, `img_037`, `img_039`, `img_040`. |
 
