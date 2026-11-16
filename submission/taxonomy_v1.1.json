@@ -1,0 +1,84 @@
+{
+  "version": "v1.1",
+  "ignore_class": "ignore_region",
+  "classes": [
+    {
+      "name": "car",
+      "definition": "Ô tô con thân kín từ 9 chỗ trở xuống: sedan, hatchback, wagon, SUV, MPV, taxi 4 bánh; xe thật đỗ hoặc trưng bày vẫn gán; bán tải là truck."
+    },
+    {
+      "name": "truck",
+      "definition": "Xe có khoang chở hàng tách khỏi cabin hoặc để hở: tải nhỏ, tải thùng, bán tải kể cả có nắp thùng, đầu kéo kèm rơ-moóc."
+    },
+    {
+      "name": "van",
+      "definition": "Xe thân liền khối kín cỡ nhỏ: panel van hoặc xe khách tối đa 16 chỗ; xe khách lớn hơn là bus."
+    },
+    {
+      "name": "motorcycle",
+      "definition": "Xe hai bánh có động cơ: xe máy, tay ga, moped, mô tô; xe gắn sidecar là một xe một box; box lấy cả gương và tay lái; xe đạp, xích lô, tuk-tuk không phải."
+    },
+    {
+      "name": "bicycle",
+      "definition": "Xe chạy bằng sức người: xe đạp, xe đạp thồ có hàng, xích lô (xe đạp ba bánh chở khách); box ôm thân xe, người đi là rider."
+    },
+    {
+      "name": "three_wheeler",
+      "definition": "Xe ba bánh có động cơ: tuk-tuk, auto-rickshaw, xe ba gác máy; xích lô đạp là bicycle."
+    },
+    {
+      "name": "bus",
+      "definition": "Xe buýt, xe khách trên 16 chỗ, minibus chở khách; mỗi xe một box ôm phần nhìn thấy. Lớp thêm ở v1.1: các vùng ignore_region từng dùng cho xe buýt ở v1.0 được gán lại thành bus và cả lô được rà lại."
+    },
+    {
+      "name": "pedestrian",
+      "definition": "Người thật không ở trên phương tiện: đi bộ, đứng, ngồi, đẩy xe, gánh hay xách hàng; box bao cả đồ mang theo; không gán tượng, ma-nơ-canh, hình in, phản chiếu, người sau kính xe kín."
+    },
+    {
+      "name": "rider",
+      "definition": "Người thật đang lái hoặc ngồi trên phương tiện hở: xe máy, xe đạp, xích lô, tuk-tuk, ô tô mui trần, thùng xe; mỗi người một box, bao cả đồ mang theo; không gán người trong khoang kín."
+    },
+    {
+      "name": "ignore_region",
+      "definition": "Vùng bỏ qua (không phải vật): phần lõi đám đông hoặc dãy xe không tách được từng vật, cụm vật thật cao dưới 20 px, vệt nhoè; bỏ sót ở đây không tính là lỗi. Từ v1.1 không dùng cho xe buýt."
+    }
+  ],
+  "attributes": [
+    {
+      "name": "occluded_level",
+      "type": "select",
+      "values": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "default": "0"
+    },
+    {
+      "name": "truncated",
+      "type": "select",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "default": "no"
+    },
+    {
+      "name": "can_review",
+      "type": "checkbox",
+      "values": [],
+      "default": "false"
+    }
+  ],
+  "rules": {
+    "min_box_height_px": 20,
+    "iou_thr_large": 0.85,
+    "iou_thr_small": 0.7,
+    "large_px": 50,
+    "iaa_iou": 0.85,
+    "iaa_class": 0.95,
+    "error_rate_img_max": 0.02,
+    "match_iou": 0.5
+  }
+}

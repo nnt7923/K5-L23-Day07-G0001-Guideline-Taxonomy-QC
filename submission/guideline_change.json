@@ -1,0 +1,4 @@
+{
+  "kind": "semantic",
+  "summary": "Thêm lớp bus thay cho ignore_region; đám đông và dãy xe: box riêng cho từng người/xe thấy từ 30% thân, ignore_region chỉ cho lõi không tách được; box motorcycle lấy cả gương và tay lái; occluded_level lấy mức thấp hơn khi phân vân. Cả lô 40 ảnh được rà lại."
+}
