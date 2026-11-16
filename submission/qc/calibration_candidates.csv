@@ -1,0 +1,620 @@
+case_id,image,issue_type,annotators,class_a,class_b,box_a,box_b,iou,ghi_chu_tu_dong
+C001,img_001.jpg,bo_sot_thua,111|222,pedestrian,,"[100,105,40,157]",,,Chỉ 111 vẽ pedestrian này. 222 bỏ sót hoặc 111 vẽ thừa.
+C002,img_001.jpg,bo_sot_thua,111|222,,pedestrian,,"[103,110,131,326]",,Chỉ 222 vẽ pedestrian này. 111 bỏ sót hoặc 222 vẽ thừa.
+C003,img_001.jpg,co_can_review,111,pedestrian,,"[325,128,83,162]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C004,img_001.jpg,iou_thap,111|222,pedestrian,pedestrian,"[400,112,128,220]","[376,112,154,200]",0.77,IoU 0.77 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C005,img_001.jpg,iou_thap,111|222,pedestrian,pedestrian,"[120,110,92,320]","[88,94,126,338]",0.69,IoU 0.69 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C006,img_001.jpg,iou_thap,111|222,pedestrian,pedestrian,"[325,128,83,162]","[323,129,104,199]",0.65,IoU 0.65 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C007,img_001.jpg,sai_thuoc_tinh,111|222,truck,truck,"[335,95,625,545]","[314,99,646,541]",0.96,truncated: 111=yes vs 222=no
+C008,img_001.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[525,115,123,197]","[525,114,121,194]",0.95,occluded_level: 111=1 vs 222=0
+C009,img_001.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[232,200,156,440]","[225,199,168,441]",0.93,occluded_level: 111=0 vs 222=1
+C010,img_001.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[120,110,92,320]","[88,94,126,338]",0.69,occluded_level: 111=1 vs 222=2
+C011,img_002.jpg,co_can_review,333,truck,,"[136,49,786,488]",,,"333 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C012,img_002.jpg,iou_thap,222|333,truck,truck,"[133,136,793,407]","[136,49,786,488]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C013,img_002.jpg,iou_thap,222|333,car,car,"[818,173,74,93]","[817,176,74,72]",0.76,IoU 0.76 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C014,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[613,121,124,100]","[612,119,125,100]",0.96,occluded_level: 222=1 vs 333=0
+C015,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[717,149,111,99]","[716,149,109,97]",0.95,occluded_level: 222=1 vs 333=0
+C016,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[553,248,152,120]","[556,249,151,116]",0.94,occluded_level: 222=1 vs 333=0
+C017,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[479,251,117,142]","[483,253,113,139]",0.94,occluded_level: 222=2 vs 333=0
+C018,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[725,270,95,122]","[727,271,93,118]",0.94,occluded_level: 222=2 vs 333=0
+C019,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[151,48,359,162]","[153,47,364,148]",0.88,occluded_level: 222=1 vs 333=0
+C020,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[479,87,156,132]","[481,92,145,120]",0.85,occluded_level: 222=1 vs 333=0
+C021,img_002.jpg,sai_thuoc_tinh,222|333,truck,truck,"[133,136,793,407]","[136,49,786,488]",0.80,occluded_level: 222=1 vs 333=0
+C022,img_002.jpg,sai_thuoc_tinh,222|333,car,car,"[818,173,74,93]","[817,176,74,72]",0.76,occluded_level: 222=1 vs 333=0
+C023,img_003.jpg,bat_dong_ignore,111|333,,,"[343,15,105,67]",,,Vùng ignore không ghép được với vùng của người kia.
+C024,img_003.jpg,bat_dong_ignore,111|333,,,"[825,0,135,112]",,,Vùng ignore không ghép được với vùng của người kia.
+C025,img_003.jpg,bat_dong_ignore,111|333,,,"[222,36,54,94]",,,Vùng ignore không ghép được với vùng của người kia.
+C026,img_003.jpg,bat_dong_ignore,111|333,,motorcycle,,"[918,40,42,73]",,Chỉ vùng ignore của 111 phủ box của 333.
+C027,img_003.jpg,bat_dong_ignore,111|333,,motorcycle,,"[875,31,85,79]",,Chỉ vùng ignore của 111 phủ box của 333.
+C028,img_003.jpg,bat_dong_ignore,111|333,,motorcycle,,"[846,11,82,95]",,Chỉ vùng ignore của 111 phủ box của 333.
+C029,img_003.jpg,bat_dong_ignore,111|333,,motorcycle,,"[806,18,86,87]",,Chỉ vùng ignore của 111 phủ box của 333.
+C030,img_003.jpg,bo_sot_thua,111|333,rider,,"[238,62,127,143]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C031,img_003.jpg,bo_sot_thua,111|333,rider,,"[736,0,59,60]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C032,img_003.jpg,bo_sot_thua,111|333,rider,,"[450,15,36,77]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C033,img_003.jpg,bo_sot_thua,111|333,motorcycle,,"[459,50,29,54]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C034,img_003.jpg,bo_sot_thua,111|333,pedestrian,,"[36,54,56,80]",,,Chỉ 111 vẽ pedestrian này. 333 bỏ sót hoặc 111 vẽ thừa.
+C035,img_003.jpg,bo_sot_thua,111|333,motorcycle,,"[32,114,68,108]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C036,img_003.jpg,bo_sot_thua,111|333,motorcycle,,"[86,106,80,116]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C037,img_003.jpg,bo_sot_thua,111|333,pedestrian,,"[91,54,24,55]",,,Chỉ 111 vẽ pedestrian này. 333 bỏ sót hoặc 111 vẽ thừa.
+C038,img_003.jpg,bo_sot_thua,111|333,pedestrian,,"[186,40,32,69]",,,Chỉ 111 vẽ pedestrian này. 333 bỏ sót hoặc 111 vẽ thừa.
+C039,img_003.jpg,bo_sot_thua,111|333,,rider,,"[744,0,85,112]",,Chỉ 333 vẽ rider này. 111 bỏ sót hoặc 333 vẽ thừa.
+C040,img_003.jpg,bo_sot_thua,111|333,,pedestrian,,"[246,57,145,232]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C041,img_003.jpg,co_can_review,111,rider,,"[736,0,59,60]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C042,img_003.jpg,co_can_review,111,pedestrian,,"[186,40,32,69]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C043,img_003.jpg,iou_thap,111|333,pedestrian,pedestrian,"[663,5,182,290]","[681,0,181,301]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C044,img_003.jpg,iou_thap,111|333,motorcycle,motorcycle,"[478,180,97,165]","[464,161,109,185]",0.76,IoU 0.76 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C045,img_003.jpg,iou_thap,111|333,pedestrian,pedestrian,"[100,0,212,578]","[40,0,276,574]",0.76,IoU 0.76 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C046,img_003.jpg,iou_thap,111|333,motorcycle,motorcycle,"[738,38,87,134]","[756,43,86,141]",0.60,IoU 0.60 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C047,img_003.jpg,iou_thap,111|333,pedestrian,pedestrian,"[0,160,78,68]","[0,145,80,118]",0.56,IoU 0.56 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C048,img_003.jpg,iou_thap,111|333,motorcycle,motorcycle,"[250,118,170,290]","[244,113,161,190]",0.56,IoU 0.56 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C049,img_003.jpg,iou_thap,111|333,rider,rider,"[465,55,110,230]","[453,32,94,220]",0.54,IoU 0.54 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C050,img_003.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[488,0,274,608]","[484,0,278,597]",0.97,truncated: 111=no vs 333=yes
+C051,img_003.jpg,sai_thuoc_tinh,111|333,bicycle,bicycle,"[0,236,420,364]","[0,252,416,346]",0.94,occluded_level: 111=2 vs 333=1
+C052,img_003.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[663,5,182,290]","[681,0,181,301]",0.80,occluded_level: 111=1 vs 333=0; truncated: 111=no vs 333=yes
+C053,img_003.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[478,180,97,165]","[464,161,109,185]",0.76,occluded_level: 111=2 vs 333=1
+C054,img_003.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[100,0,212,578]","[40,0,276,574]",0.76,occluded_level: 111=1 vs 333=0; truncated: 111=no vs 333=yes
+C055,img_003.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[0,160,78,68]","[0,145,80,118]",0.56,truncated: 111=no vs 333=yes
+C056,img_003.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[250,118,170,290]","[244,113,161,190]",0.56,occluded_level: 111=2 vs 333=1
+C057,img_003.jpg,sai_thuoc_tinh,111|333,rider,rider,"[465,55,110,230]","[453,32,94,220]",0.54,occluded_level: 111=2 vs 333=1
+C058,img_004.jpg,bo_sot_thua,222|333,,rider,,"[183,111,159,187]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C059,img_004.jpg,bo_sot_thua,222|333,,rider,,"[575,151,87,198]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C060,img_004.jpg,iou_thap,222|333,three_wheeler,three_wheeler,"[392,89,463,362]","[439,105,414,341]",0.84,IoU 0.84 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C061,img_005.jpg,bo_sot_thua,111|222,rider,,"[320,115,172,170]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C062,img_005.jpg,bo_sot_thua,111|222,motorcycle,,"[760,320,200,320]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C063,img_005.jpg,bo_sot_thua,111|222,car,,"[0,140,95,148]",,,Chỉ 111 vẽ car này. 222 bỏ sót hoặc 111 vẽ thừa.
+C064,img_005.jpg,bo_sot_thua,111|222,,rider,,"[897,101,63,115]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C065,img_005.jpg,bo_sot_thua,111|222,,rider,,"[443,51,448,418]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C066,img_005.jpg,bo_sot_thua,111|222,,car,,"[0,98,304,191]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C067,img_005.jpg,co_can_review,111,rider,,"[320,115,172,170]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C068,img_005.jpg,co_can_review,111,motorcycle,,"[0,300,210,260]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C069,img_005.jpg,co_can_review,111,motorcycle,,"[760,320,200,320]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C070,img_005.jpg,co_can_review,111,van,,"[0,75,72,75]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C071,img_005.jpg,iou_thap,111|222,rider,rider,"[425,30,460,610]","[302,29,605,611]",0.76,IoU 0.76 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C072,img_005.jpg,iou_thap,111|222,motorcycle,rider,"[0,300,210,260]","[0,294,212,346]",0.75,IoU 0.75 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C073,img_005.jpg,iou_thap,111|222,van,van,"[0,75,72,75]","[0,74,82,105]",0.63,IoU 0.63 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C074,img_005.jpg,iou_thap,111|222,rider,rider,"[538,148,387,492]","[326,146,634,494]",0.61,IoU 0.61 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C075,img_005.jpg,sai_lop,111|222,motorcycle,rider,"[0,300,210,260]","[0,294,212,346]",0.75,"111 gán motorcycle, 222 gán rider cho cùng một vật"
+C076,img_005.jpg,sai_thuoc_tinh,111|222,rider,rider,"[35,222,413,418]","[27,219,424,421]",0.97,occluded_level: 111=0 vs 222=2
+C077,img_005.jpg,sai_thuoc_tinh,111|222,rider,rider,"[425,30,460,610]","[302,29,605,611]",0.76,occluded_level: 111=2 vs 222=1
+C078,img_005.jpg,sai_thuoc_tinh,111|222,motorcycle,rider,"[0,300,210,260]","[0,294,212,346]",0.75,occluded_level: 111=2 vs 222=3
+C079,img_005.jpg,sai_thuoc_tinh,111|222,rider,rider,"[538,148,387,492]","[326,146,634,494]",0.61,occluded_level: 111=0 vs 222=2
+C080,img_006.jpg,bat_dong_ignore,111|333,,,"[731,140,229,100]",,,Vùng ignore không ghép được với vùng của người kia.
+C081,img_006.jpg,bo_sot_thua,111|333,bicycle,,"[700,240,75,122]",,,Chỉ 111 vẽ bicycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C082,img_006.jpg,bo_sot_thua,111|333,rider,,"[434,143,65,150]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C083,img_006.jpg,bo_sot_thua,111|333,rider,,"[494,164,27,91]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C084,img_006.jpg,bo_sot_thua,111|333,rider,,"[584,143,46,97]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C085,img_006.jpg,bo_sot_thua,111|333,car,,"[558,155,74,40]",,,Chỉ 111 vẽ car này. 333 bỏ sót hoặc 111 vẽ thừa.
+C086,img_006.jpg,bo_sot_thua,111|333,rider,,"[683,140,49,110]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C087,img_006.jpg,bo_sot_thua,111|333,rider,,"[295,176,22,42]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C088,img_006.jpg,bo_sot_thua,111|333,bicycle,,"[293,198,20,35]",,,Chỉ 111 vẽ bicycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C089,img_006.jpg,bo_sot_thua,111|333,rider,,"[321,176,21,42]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C090,img_006.jpg,bo_sot_thua,111|333,motorcycle,,"[319,188,24,49]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C091,img_006.jpg,bo_sot_thua,111|333,rider,,"[247,174,21,41]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C092,img_006.jpg,bo_sot_thua,111|333,motorcycle,,"[251,196,17,26]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C093,img_006.jpg,bo_sot_thua,111|333,,rider,,"[433,140,67,78]",,Chỉ 333 vẽ rider này. 111 bỏ sót hoặc 333 vẽ thừa.
+C094,img_006.jpg,co_can_review,111,rider,,"[914,148,46,262]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C095,img_006.jpg,co_can_review,111,rider,,"[494,164,27,91]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C096,img_006.jpg,co_can_review,111,rider,,"[584,143,46,97]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C097,img_006.jpg,co_can_review,111,car,,"[558,155,74,40]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C098,img_006.jpg,co_can_review,111,motorcycle,,"[251,196,17,26]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C099,img_006.jpg,iou_thap,111|333,motorcycle,motorcycle,"[414,204,102,106]","[432,203,86,109]",0.79,IoU 0.79 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C100,img_006.jpg,iou_thap,111|333,bicycle,bicycle,"[521,235,51,110]","[518,218,60,128]",0.73,IoU 0.73 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C101,img_006.jpg,iou_thap,111|333,bicycle,bicycle,"[860,232,90,168]","[873,244,87,153]",0.71,IoU 0.71 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C102,img_006.jpg,iou_thap,111|333,bicycle,bicycle,"[745,230,145,310]","[750,312,141,228]",0.71,IoU 0.71 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C103,img_006.jpg,iou_thap,111|333,rider,rider,"[103,92,166,303]","[96,90,123,305]",0.67,IoU 0.67 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C104,img_006.jpg,iou_thap,111|333,rider,rider,"[176,97,109,197]","[166,93,113,154]",0.66,IoU 0.66 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C105,img_006.jpg,iou_thap,111|333,rider,rider,"[914,148,46,262]","[895,128,65,250]",0.60,IoU 0.60 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C106,img_006.jpg,iou_thap,111|333,motorcycle,motorcycle,"[580,200,161,275]","[606,275,139,199]",0.60,IoU 0.60 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C107,img_006.jpg,iou_thap,111|333,motorcycle,motorcycle,"[90,177,201,313]","[91,283,179,205]",0.58,IoU 0.58 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C108,img_006.jpg,sai_thuoc_tinh,111|333,rider,rider,"[571,124,154,321]","[570,122,151,324]",0.96,occluded_level: 111=0 vs 333=1
+C109,img_006.jpg,sai_thuoc_tinh,111|333,car,car,"[0,128,112,217]","[0,126,116,230]",0.91,occluded_level: 111=1 vs 333=0
+C110,img_006.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[322,232,146,250]","[318,262,149,220]",0.85,occluded_level: 111=1 vs 333=0
+C111,img_006.jpg,sai_thuoc_tinh,111|333,bicycle,bicycle,"[860,232,90,168]","[873,244,87,153]",0.71,occluded_level: 111=2 vs 333=1; truncated: 111=no vs 333=yes
+C112,img_006.jpg,sai_thuoc_tinh,111|333,bicycle,bicycle,"[745,230,145,310]","[750,312,141,228]",0.71,occluded_level: 111=1 vs 333=0; truncated: 111=yes vs 333=no
+C113,img_006.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[580,200,161,275]","[606,275,139,199]",0.60,occluded_level: 111=1 vs 333=0
+C114,img_006.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[90,177,201,313]","[91,283,179,205]",0.58,occluded_level: 111=1 vs 333=0
+C115,img_008.jpg,bat_dong_ignore,111|222,,,"[640,160,108,95]",,,Vùng ignore không ghép được với vùng của người kia.
+C116,img_008.jpg,bat_dong_ignore,111|222,,,"[322,178,96,62]",,,Vùng ignore không ghép được với vùng của người kia.
+C117,img_008.jpg,bat_dong_ignore,111|222,,,"[392,262,196,46]",,,Vùng ignore không ghép được với vùng của người kia.
+C118,img_008.jpg,bat_dong_ignore,111|222,,,"[0,190,196,216]",,,Vùng ignore không ghép được với vùng của người kia.
+C119,img_008.jpg,bat_dong_ignore,111|222,,pedestrian,,"[387,177,18,16]",,Chỉ vùng ignore của 111 phủ box của 222.
+C120,img_008.jpg,bat_dong_ignore,111|222,,pedestrian,,"[372,180,53,52]",,Chỉ vùng ignore của 111 phủ box của 222.
+C121,img_008.jpg,bat_dong_ignore,111|222,,motorcycle,,"[158,224,54,72]",,Chỉ vùng ignore của 111 phủ box của 222.
+C122,img_008.jpg,bat_dong_ignore,111|222,,motorcycle,,"[77,185,122,144]",,Chỉ vùng ignore của 111 phủ box của 222.
+C123,img_008.jpg,bat_dong_ignore,111|222,,motorcycle,,"[0,192,109,222]",,Chỉ vùng ignore của 111 phủ box của 222.
+C124,img_008.jpg,bat_dong_ignore,111|222,,truck,,"[628,158,117,127]",,Chỉ vùng ignore của 111 phủ box của 222.
+C125,img_008.jpg,bo_sot_thua,111|222,rider,,"[611,152,246,454]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C126,img_008.jpg,bo_sot_thua,111|222,motorcycle,,"[322,345,133,215]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C127,img_008.jpg,bo_sot_thua,111|222,motorcycle,,"[680,258,40,52]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C128,img_008.jpg,bo_sot_thua,111|222,car,,"[628,208,40,77]",,,Chỉ 111 vẽ car này. 222 bỏ sót hoặc 111 vẽ thừa.
+C129,img_008.jpg,bo_sot_thua,111|222,truck,,"[603,175,38,57]",,,Chỉ 111 vẽ truck này. 222 bỏ sót hoặc 111 vẽ thừa.
+C130,img_008.jpg,bo_sot_thua,111|222,pedestrian,,"[459,198,36,66]",,,Chỉ 111 vẽ pedestrian này. 222 bỏ sót hoặc 111 vẽ thừa.
+C131,img_008.jpg,bo_sot_thua,111|222,pedestrian,,"[852,188,25,44]",,,Chỉ 111 vẽ pedestrian này. 222 bỏ sót hoặc 111 vẽ thừa.
+C132,img_008.jpg,bo_sot_thua,111|222,,pedestrian,,"[450,199,46,109]",,Chỉ 222 vẽ pedestrian này. 111 bỏ sót hoặc 222 vẽ thừa.
+C133,img_008.jpg,bo_sot_thua,111|222,,pedestrian,,"[216,196,20,39]",,Chỉ 222 vẽ pedestrian này. 111 bỏ sót hoặc 222 vẽ thừa.
+C134,img_008.jpg,bo_sot_thua,111|222,,pedestrian,,"[192,200,32,47]",,Chỉ 222 vẽ pedestrian này. 111 bỏ sót hoặc 222 vẽ thừa.
+C135,img_008.jpg,bo_sot_thua,111|222,,motorcycle,,"[391,219,165,129]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C136,img_008.jpg,bo_sot_thua,111|222,,motorcycle,,"[307,288,226,206]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C137,img_008.jpg,bo_sot_thua,111|222,,motorcycle,,"[822,218,34,40]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C138,img_008.jpg,bo_sot_thua,111|222,,motorcycle,,"[183,303,274,257]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C139,img_008.jpg,co_can_review,111,pedestrian,,"[198,182,120,218]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C140,img_008.jpg,co_can_review,111,car,,"[628,208,40,77]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C141,img_008.jpg,co_can_review,111,truck,,"[603,175,38,57]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C142,img_008.jpg,co_can_review,111,pedestrian,,"[946,208,14,52]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C143,img_008.jpg,co_can_review,111,motorcycle,,"[940,246,20,52]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C144,img_008.jpg,iou_thap,111|222,pedestrian,pedestrian,"[582,204,16,53]","[582,204,19,54]",0.81,IoU 0.81 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C145,img_008.jpg,iou_thap,111|222,rider,rider,"[670,203,59,94]","[669,203,63,114]",0.78,IoU 0.78 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C146,img_008.jpg,iou_thap,111|222,motorcycle,motorcycle,"[350,308,202,137]","[396,309,159,136]",0.76,IoU 0.76 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C147,img_008.jpg,iou_thap,111|222,motorcycle,rider,"[553,282,407,358]","[550,151,410,489]",0.73,IoU 0.73 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C148,img_008.jpg,iou_thap,111|222,motorcycle,motorcycle,"[940,246,20,52]","[934,243,26,56]",0.72,IoU 0.72 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C149,img_008.jpg,iou_thap,111|222,pedestrian,pedestrian,"[418,194,31,68]","[417,192,39,76]",0.71,IoU 0.71 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C150,img_008.jpg,iou_thap,111|222,pedestrian,pedestrian,"[946,208,14,52]","[947,208,13,37]",0.68,IoU 0.68 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C151,img_008.jpg,iou_thap,111|222,pedestrian,pedestrian,"[500,191,42,65]","[495,190,56,80]",0.60,IoU 0.60 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C152,img_008.jpg,sai_lop,111|222,motorcycle,rider,"[553,282,407,358]","[550,151,410,489]",0.73,"111 gán motorcycle, 222 gán rider cho cùng một vật"
+C153,img_008.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[928,208,21,84]","[928,208,22,85]",0.92,occluded_level: 111=0 vs 222=2
+C154,img_008.jpg,sai_thuoc_tinh,111|222,motorcycle,motorcycle,"[72,253,310,387]","[43,250,341,390]",0.90,occluded_level: 111=1 vs 222=0
+C155,img_008.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[544,196,34,58]","[544,196,35,62]",0.90,occluded_level: 111=1 vs 222=2
+C156,img_008.jpg,sai_thuoc_tinh,111|222,rider,rider,"[670,203,59,94]","[669,203,63,114]",0.78,occluded_level: 111=0 vs 222=1
+C157,img_008.jpg,sai_thuoc_tinh,111|222,motorcycle,motorcycle,"[940,246,20,52]","[934,243,26,56]",0.72,occluded_level: 111=1 vs 222=0
+C158,img_008.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[418,194,31,68]","[417,192,39,76]",0.71,occluded_level: 111=2 vs 222=1
+C159,img_009.jpg,bo_sot_thua,111|333,motorcycle,,"[692,435,22,30]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C160,img_009.jpg,bo_sot_thua,111|333,bicycle,,"[797,426,21,39]",,,Chỉ 111 vẽ bicycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C161,img_009.jpg,bo_sot_thua,111|333,pedestrian,,"[213,303,17,40]",,,Chỉ 111 vẽ pedestrian này. 333 bỏ sót hoặc 111 vẽ thừa.
+C162,img_009.jpg,co_can_review,111,motorcycle,,"[905,430,55,67]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C163,img_009.jpg,co_can_review,111,pedestrian,,"[719,404,13,37]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C164,img_009.jpg,iou_thap,111|333,motorcycle,motorcycle,"[905,430,55,67]","[914,428,46,68]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C165,img_009.jpg,iou_thap,111|333,pedestrian,pedestrian,"[719,404,13,37]","[718,403,18,39]",0.69,IoU 0.69 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C166,img_009.jpg,iou_thap,111|333,rider,rider,"[158,420,32,50]","[157,416,24,59]",0.62,IoU 0.62 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C167,img_009.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[867,434,38,46]","[866,432,38,50]",0.87,occluded_level: 111=1 vs 333=0
+C168,img_009.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[155,445,40,40]","[153,438,42,47]",0.81,occluded_level: 111=1 vs 333=0
+C169,img_009.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[905,430,55,67]","[914,428,46,68]",0.80,occluded_level: 111=2 vs 333=0; truncated: 111=no vs 333=yes
+C170,img_009.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[776,430,19,40]","[774,429,23,42]",0.79,occluded_level: 111=0 vs 333=1
+C171,img_009.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[719,404,13,37]","[718,403,18,39]",0.69,occluded_level: 111=1 vs 333=0
+C172,img_010.jpg,bo_sot_thua,111|222,rider,,"[119,116,231,303]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C173,img_010.jpg,bo_sot_thua,111|222,motorcycle,,"[169,232,166,306]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C174,img_010.jpg,bo_sot_thua,111|222,motorcycle,,"[580,250,305,372]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C175,img_010.jpg,bo_sot_thua,111|222,motorcycle,,"[780,192,180,248]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C176,img_010.jpg,bo_sot_thua,111|222,,motorcycle,,"[581,187,379,264]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C177,img_010.jpg,iou_thap,111|222,rider,rider,"[137,86,237,424]","[117,84,291,455]",0.76,IoU 0.76 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C178,img_010.jpg,iou_thap,111|222,rider,rider,"[560,128,248,464]","[559,125,331,499]",0.70,IoU 0.70 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C179,img_010.jpg,iou_thap,111|222,bicycle,bicycle,"[380,298,242,220]","[360,209,263,305]",0.65,IoU 0.65 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C180,img_010.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[309,114,144,375]","[309,112,144,377]",0.99,occluded_level: 111=1 vs 222=0
+C181,img_010.jpg,sai_thuoc_tinh,111|222,rider,rider,"[137,86,237,424]","[117,84,291,455]",0.76,occluded_level: 111=2 vs 222=0
+C182,img_010.jpg,sai_thuoc_tinh,111|222,bicycle,bicycle,"[380,298,242,220]","[360,209,263,305]",0.65,occluded_level: 111=1 vs 222=2
+C183,img_011.jpg,bat_dong_ignore,111|333,,,"[0,322,516,16]",,,Vùng ignore không ghép được với vùng của người kia.
+C184,img_011.jpg,bat_dong_ignore,111|333,,,"[468,338,47,28]",,,Vùng ignore không ghép được với vùng của người kia.
+C185,img_011.jpg,bat_dong_ignore,111|333,,,"[0,338,30,44]",,,Vùng ignore không ghép được với vùng của người kia.
+C186,img_011.jpg,bat_dong_ignore,111|333,,motorcycle,,"[2,351,27,28]",,Chỉ vùng ignore của 111 phủ box của 333.
+C187,img_011.jpg,bo_sot_thua,111|333,,pedestrian,,"[43,346,12,59]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C188,img_011.jpg,bo_sot_thua,111|333,,pedestrian,,"[406,337,9,31]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C189,img_011.jpg,bo_sot_thua,111|333,,pedestrian,,"[338,340,9,44]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C190,img_011.jpg,bo_sot_thua,111|333,,pedestrian,,"[327,339,8,45]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C191,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[213,343,15,56]","[212,338,15,60]",0.82,IoU 0.82 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C192,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[84,339,19,53]","[82,335,21,62]",0.77,IoU 0.77 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C193,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[171,343,21,63]","[174,342,15,64]",0.69,IoU 0.69 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C194,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[306,338,15,49]","[307,338,10,47]",0.64,IoU 0.64 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C195,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[32,345,26,59]","[32,340,18,63]",0.63,IoU 0.63 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C196,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[198,341,19,64]","[201,340,13,60]",0.62,IoU 0.62 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C197,img_011.jpg,iou_thap,111|333,pedestrian,pedestrian,"[421,334,14,41]","[424,332,9,41]",0.57,IoU 0.57 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C198,img_011.jpg,sai_lop,111|333,car,van,"[515,325,113,87]","[515,326,111,84]",0.94,"111 gán car, 333 gán van cho cùng một vật"
+C199,img_011.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[358,343,23,58]","[358,342,23,59]",0.95,occluded_level: 111=1 vs 333=0
+C200,img_011.jpg,sai_thuoc_tinh,111|333,car,van,"[515,325,113,87]","[515,326,111,84]",0.94,occluded_level: 111=2 vs 333=0
+C201,img_011.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[213,343,15,56]","[212,338,15,60]",0.82,occluded_level: 111=2 vs 333=0
+C202,img_011.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[198,341,19,64]","[201,340,13,60]",0.62,occluded_level: 111=1 vs 333=0
+C203,img_012.jpg,sai_thuoc_tinh,222|333,car,car,"[290,245,670,395]","[292,250,668,390]",0.99,truncated: 222=yes vs 333=no
+C204,img_012.jpg,sai_thuoc_tinh,222|333,car,car,"[296,295,39,29]","[295,294,34,30]",0.80,occluded_level: 222=1 vs 333=2
+C205,img_013.jpg,bat_dong_ignore,111|222,,,"[212,410,88,32]",,,Vùng ignore không ghép được với vùng của người kia.
+C206,img_013.jpg,bat_dong_ignore,111|222,,car,,"[260,418,64,27]",,Chỉ vùng ignore của 111 phủ box của 222.
+C207,img_013.jpg,bat_dong_ignore,111|222,,car,,"[240,417,43,25]",,Chỉ vùng ignore của 111 phủ box của 222.
+C208,img_013.jpg,bo_sot_thua,111|222,,car,,"[297,417,54,28]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C209,img_013.jpg,iou_thap,111|222,pedestrian,pedestrian,"[349,422,33,78]","[347,421,29,80]",0.74,IoU 0.74 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C210,img_013.jpg,sai_thuoc_tinh,111|222,motorcycle,motorcycle,"[255,432,50,54]","[252,440,56,44]",0.75,occluded_level: 111=1 vs 222=2
+C211,img_014.jpg,bat_dong_ignore,222|333,,,,"[0,179,260,389]",,Vùng ignore không ghép được với vùng của người kia.
+C212,img_014.jpg,bat_dong_ignore,222|333,,,,"[866,179,94,365]",,Vùng ignore không ghép được với vùng của người kia.
+C213,img_014.jpg,bat_dong_ignore,222|333,,,,"[478,181,172,349]",,Vùng ignore không ghép được với vùng của người kia.
+C214,img_014.jpg,bat_dong_ignore,222|333,rider,,"[799,183,161,304]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C215,img_014.jpg,bat_dong_ignore,222|333,rider,,"[370,177,316,369]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C216,img_014.jpg,bat_dong_ignore,222|333,motorcycle,,"[26,176,302,412]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C217,img_015.jpg,co_can_review,111,car,,"[735,102,110,90]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C218,img_015.jpg,iou_thap,111|333,car,car,"[735,102,110,90]","[719,104,132,96]",0.75,IoU 0.75 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C219,img_015.jpg,sai_thuoc_tinh,111|333,car,car,"[735,102,110,90]","[719,104,132,96]",0.75,occluded_level: 111=2 vs 333=0
+C220,img_016.jpg,bo_sot_thua,111|333,car,,"[425,305,175,110]",,,Chỉ 111 vẽ car này. 333 bỏ sót hoặc 111 vẽ thừa.
+C221,img_016.jpg,bo_sot_thua,111|333,rider,,"[805,402,135,78]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C222,img_016.jpg,bo_sot_thua,111|333,,car,,"[493,303,106,91]",,Chỉ 333 vẽ car này. 111 bỏ sót hoặc 333 vẽ thừa.
+C223,img_016.jpg,bo_sot_thua,111|333,,pedestrian,,"[417,335,31,80]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C224,img_016.jpg,bo_sot_thua,111|333,,rider,,"[811,398,119,157]",,Chỉ 333 vẽ rider này. 111 bỏ sót hoặc 333 vẽ thừa.
+C225,img_016.jpg,co_can_review,111,truck,,"[0,278,330,234]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C226,img_016.jpg,co_can_review,111,rider,,"[805,402,135,78]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C227,img_016.jpg,iou_thap,111|333,rider,pedestrian,"[12,382,120,96]","[5,374,127,109]",0.83,IoU 0.83 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C228,img_016.jpg,sai_lop,111|333,rider,pedestrian,"[12,382,120,96]","[5,374,127,109]",0.83,"111 gán rider, 333 gán pedestrian cho cùng một vật"
+C229,img_016.jpg,sai_thuoc_tinh,111|333,three_wheeler,three_wheeler,"[0,308,195,350]","[0,306,199,356]",0.96,occluded_level: 111=0 vs 333=1
+C230,img_016.jpg,sai_thuoc_tinh,111|333,truck,truck,"[0,278,330,234]","[0,277,326,245]",0.94,occluded_level: 111=2 vs 333=1
+C231,img_016.jpg,sai_thuoc_tinh,111|333,three_wheeler,three_wheeler,"[655,330,305,345]","[647,314,313,361]",0.93,occluded_level: 111=1 vs 333=0
+C232,img_016.jpg,sai_thuoc_tinh,111|333,rider,pedestrian,"[12,382,120,96]","[5,374,127,109]",0.83,occluded_level: 111=2 vs 333=0
+C233,img_018.jpg,iou_thap,111|222,car,car,"[570,548,270,120]","[570,550,274,137]",0.83,IoU 0.83 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C234,img_018.jpg,iou_thap,111|222,car,car,"[165,497,207,158]","[162,495,210,195]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C235,img_018.jpg,iou_thap,111|222,car,car,"[388,543,222,122]","[385,543,224,150]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C236,img_018.jpg,iou_thap,111|222,car,car,"[0,530,112,118]","[2,530,115,148]",0.75,IoU 0.75 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C237,img_018.jpg,sai_thuoc_tinh,111|222,car,car,"[165,497,207,158]","[162,495,210,195]",0.80,occluded_level: 111=1 vs 222=2
+C238,img_018.jpg,sai_thuoc_tinh,111|222,car,car,"[0,530,112,118]","[2,530,115,148]",0.75,occluded_level: 111=1 vs 222=2
+C239,img_019.jpg,bat_dong_ignore,222|333,,,,"[0,0,960,252]",,Vùng ignore không ghép được với vùng của người kia.
+C240,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[531,122,51,71]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C241,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[828,134,29,22]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C242,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[825,112,17,34]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C243,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[863,123,30,72]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C244,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[877,152,38,119]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C245,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[893,149,17,122]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C246,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[923,150,37,142]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C247,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[895,129,27,24]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C248,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[914,115,29,34]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C249,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[700,119,45,84]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C250,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[713,130,46,95]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C251,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[693,95,27,45]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C252,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[669,98,24,42]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C253,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[640,94,15,21]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C254,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[623,105,18,32]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C255,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[631,115,53,68]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C256,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[633,163,27,48]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C257,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[579,127,59,46]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C258,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[593,153,31,56]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C259,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[561,163,44,75]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C260,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[570,88,25,48]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C261,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[937,145,19,21]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C262,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[731,105,22,27]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C263,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[0,127,28,138]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C264,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[0,96,10,34]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C265,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[80,148,79,195]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C266,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[29,166,84,143]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C267,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[36,104,100,278]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C268,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[75,79,47,41]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C269,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[83,1,82,173]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C270,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[97,65,68,316]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C271,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[145,0,28,71]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C272,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[156,58,32,88]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C273,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[168,94,88,283]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C274,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[232,100,83,274]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C275,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[223,69,38,50]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C276,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[200,47,33,51]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C277,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[265,110,97,116]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C278,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[302,146,55,181]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C279,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[312,80,32,43]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C280,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[339,79,37,59]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C281,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[334,120,65,188]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C282,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[366,135,43,153]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C283,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[369,84,33,44]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C284,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[748,135,53,84]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C285,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[784,128,18,56]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C286,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[798,114,28,78]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C287,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[786,75,29,54]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C288,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[810,81,21,37]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C289,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[808,156,37,99]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C290,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[825,149,31,118]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C291,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[841,165,32,115]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C292,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[808,100,34,64]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C293,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[545,99,33,26]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C294,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[512,89,41,64]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C295,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[521,151,44,111]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C296,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[396,156,49,128]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C297,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[426,159,49,132]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C298,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[454,196,60,92]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C299,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[420,121,57,70]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C300,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[416,86,49,65]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C301,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[471,116,72,80]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C302,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[447,72,22,19]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C303,img_019.jpg,bat_dong_ignore,222|333,pedestrian,,"[381,120,30,37]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C304,img_019.jpg,bo_sot_thua,222|333,pedestrian,,"[128,119,104,273]",,,Chỉ 222 vẽ pedestrian này. 333 bỏ sót hoặc 222 vẽ thừa.
+C305,img_019.jpg,bo_sot_thua,222|333,,rider,,"[532,236,64,58]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C306,img_019.jpg,co_can_review,333,car,,"[123,211,751,412]",,,"333 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C307,img_019.jpg,sai_lop,222|333,rider,car,"[121,201,758,432]","[123,211,751,412]",0.95,"222 gán rider, 333 gán car cho cùng một vật"
+C308,img_019.jpg,sai_thuoc_tinh,222|333,rider,car,"[121,201,758,432]","[123,211,751,412]",0.95,occluded_level: 222=1 vs 333=0; truncated: 222=yes vs 333=no
+C309,img_021.jpg,bat_dong_ignore,111|222,,,"[527,200,353,100]",,,Vùng ignore không ghép được với vùng của người kia.
+C310,img_021.jpg,bat_dong_ignore,111|222,,,"[152,255,48,80]",,,Vùng ignore không ghép được với vùng của người kia.
+C311,img_021.jpg,bat_dong_ignore,111|222,,,"[312,252,88,120]",,,Vùng ignore không ghép được với vùng của người kia.
+C312,img_021.jpg,bat_dong_ignore,111|222,,,"[830,185,88,20]",,,Vùng ignore không ghép được với vùng của người kia.
+C313,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[671,245,48,94]",,Chỉ vùng ignore của 111 phủ box của 222.
+C314,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[306,248,36,78]",,Chỉ vùng ignore của 111 phủ box của 222.
+C315,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[547,234,38,91]",,Chỉ vùng ignore của 111 phủ box của 222.
+C316,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[602,246,46,63]",,Chỉ vùng ignore của 111 phủ box của 222.
+C317,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[644,238,39,62]",,Chỉ vùng ignore của 111 phủ box của 222.
+C318,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[844,232,41,83]",,Chỉ vùng ignore của 111 phủ box của 222.
+C319,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[535,224,27,47]",,Chỉ vùng ignore của 111 phủ box của 222.
+C320,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[797,221,24,79]",,Chỉ vùng ignore của 111 phủ box của 222.
+C321,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[722,242,43,90]",,Chỉ vùng ignore của 111 phủ box của 222.
+C322,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[752,233,43,90]",,Chỉ vùng ignore của 111 phủ box của 222.
+C323,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[361,235,22,44]",,Chỉ vùng ignore của 111 phủ box của 222.
+C324,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[375,238,27,61]",,Chỉ vùng ignore của 111 phủ box của 222.
+C325,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[335,257,33,76]",,Chỉ vùng ignore của 111 phủ box của 222.
+C326,img_021.jpg,bat_dong_ignore,111|222,,rider,,"[329,242,16,37]",,Chỉ vùng ignore của 111 phủ box của 222.
+C327,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[248,555,200,88]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C328,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[48,424,407,207]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C329,img_021.jpg,bo_sot_thua,111|222,rider,,"[159,324,75,124]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C330,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[538,445,177,198]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C331,img_021.jpg,bo_sot_thua,111|222,rider,,"[452,302,93,103]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C332,img_021.jpg,bo_sot_thua,111|222,rider,,"[504,288,78,87]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C333,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[455,410,130,112]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C334,img_021.jpg,bo_sot_thua,111|222,rider,,"[398,270,84,122]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C335,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[703,345,49,83]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C336,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[796,305,60,63]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C337,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[65,314,87,93]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C338,img_021.jpg,bo_sot_thua,111|222,rider,,"[0,325,70,133]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C339,img_021.jpg,bo_sot_thua,111|222,motorcycle,,"[0,440,70,120]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C340,img_021.jpg,bo_sot_thua,111|222,rider,,"[200,271,59,91]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C341,img_021.jpg,bo_sot_thua,111|222,rider,,"[259,264,53,98]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C342,img_021.jpg,bo_sot_thua,111|222,car,,"[0,240,165,105]",,,Chỉ 111 vẽ car này. 222 bỏ sót hoặc 111 vẽ thừa.
+C343,img_021.jpg,bo_sot_thua,111|222,car,,"[252,236,130,64]",,,Chỉ 111 vẽ car này. 222 bỏ sót hoặc 111 vẽ thừa.
+C344,img_021.jpg,bo_sot_thua,111|222,car,,"[419,218,108,44]",,,Chỉ 111 vẽ car này. 222 bỏ sót hoặc 111 vẽ thừa.
+C345,img_021.jpg,bo_sot_thua,111|222,,rider,,"[45,323,190,313]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C346,img_021.jpg,bo_sot_thua,111|222,,rider,,"[136,257,73,160]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C347,img_021.jpg,bo_sot_thua,111|222,,rider,,"[433,228,27,33]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C348,img_021.jpg,bo_sot_thua,111|222,,rider,,"[441,247,51,76]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C349,img_021.jpg,bo_sot_thua,111|222,,rider,,"[225,251,38,88]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C350,img_021.jpg,bo_sot_thua,111|222,,rider,,"[158,269,104,106]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C351,img_021.jpg,bo_sot_thua,111|222,,rider,,"[219,262,131,160]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C352,img_021.jpg,bo_sot_thua,111|222,,rider,,"[504,238,52,89]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C353,img_021.jpg,bo_sot_thua,111|222,,rider,,"[458,237,39,68]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C354,img_021.jpg,bo_sot_thua,111|222,,rider,,"[357,270,120,196]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C355,img_021.jpg,bo_sot_thua,111|222,,rider,,"[454,288,149,239]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C356,img_021.jpg,bo_sot_thua,111|222,,rider,,"[499,255,71,90]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C357,img_021.jpg,bo_sot_thua,111|222,,rider,,"[425,262,63,83]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C358,img_021.jpg,bo_sot_thua,111|222,,rider,,"[393,224,25,46]",,Chỉ 222 vẽ rider này. 111 bỏ sót hoặc 222 vẽ thừa.
+C359,img_021.jpg,co_can_review,111,motorcycle,,"[248,555,200,88]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C360,img_021.jpg,co_can_review,111,rider,,"[0,325,70,133]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C361,img_021.jpg,co_can_review,111,motorcycle,,"[0,440,70,120]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C362,img_021.jpg,co_can_review,111,car,,"[419,218,108,44]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C363,img_021.jpg,iou_thap,111|222,rider,rider,"[803,241,59,109]","[796,242,68,125]",0.74,IoU 0.74 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C364,img_021.jpg,iou_thap,111|222,rider,rider,"[578,303,183,311]","[535,301,226,342]",0.73,IoU 0.73 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C365,img_021.jpg,iou_thap,111|222,rider,rider,"[248,329,178,261]","[219,328,239,279]",0.70,IoU 0.70 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C366,img_021.jpg,iou_thap,111|222,rider,rider,"[83,248,69,82]","[72,250,85,99]",0.65,IoU 0.65 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C367,img_021.jpg,iou_thap,111|222,rider,rider,"[700,259,58,141]","[689,259,72,183]",0.62,IoU 0.62 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C368,img_021.jpg,iou_thap,111|222,rider,rider,"[642,293,85,107]","[640,293,92,160]",0.62,IoU 0.62 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C369,img_021.jpg,iou_thap,111|222,rider,rider,"[569,280,48,72]","[568,255,54,109]",0.59,IoU 0.59 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C370,img_021.jpg,iou_thap,111|222,motorcycle,rider,"[0,360,138,102]","[0,292,139,176]",0.58,IoU 0.58 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C371,img_021.jpg,iou_thap,111|222,rider,rider,"[36,262,77,118]","[35,261,121,145]",0.52,IoU 0.52 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C372,img_021.jpg,sai_lop,111|222,motorcycle,rider,"[0,360,138,102]","[0,292,139,176]",0.58,"111 gán motorcycle, 222 gán rider cho cùng một vật"
+C373,img_021.jpg,sai_thuoc_tinh,111|222,rider,rider,"[803,241,59,109]","[796,242,68,125]",0.74,occluded_level: 111=1 vs 222=0
+C374,img_021.jpg,sai_thuoc_tinh,111|222,rider,rider,"[578,303,183,311]","[535,301,226,342]",0.73,truncated: 111=no vs 222=yes
+C375,img_021.jpg,sai_thuoc_tinh,111|222,rider,rider,"[248,329,178,261]","[219,328,239,279]",0.70,occluded_level: 111=1 vs 222=2
+C376,img_021.jpg,sai_thuoc_tinh,111|222,rider,rider,"[83,248,69,82]","[72,250,85,99]",0.65,occluded_level: 111=1 vs 222=2
+C377,img_021.jpg,sai_thuoc_tinh,111|222,motorcycle,rider,"[0,360,138,102]","[0,292,139,176]",0.58,occluded_level: 111=1 vs 222=2; truncated: 111=no vs 222=yes
+C378,img_021.jpg,sai_thuoc_tinh,111|222,rider,rider,"[36,262,77,118]","[35,261,121,145]",0.52,occluded_level: 111=1 vs 222=0
+C379,img_022.jpg,co_can_review,333,motorcycle,,"[484,472,205,154]",,,"333 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C380,img_022.jpg,sai_lop,222|333,rider,motorcycle,"[481,464,209,160]","[484,472,205,154]",0.92,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C381,img_023.jpg,bat_dong_ignore,111|222,,,"[392,170,108,55]",,,Vùng ignore không ghép được với vùng của người kia.
+C382,img_023.jpg,bat_dong_ignore,111|222,,,"[823,168,58,70]",,,Vùng ignore không ghép được với vùng của người kia.
+C383,img_023.jpg,bat_dong_ignore,111|222,,bicycle,,"[820,188,61,50]",,Chỉ vùng ignore của 111 phủ box của 222.
+C384,img_023.jpg,bat_dong_ignore,111|222,,motorcycle,,"[426,169,44,54]",,Chỉ vùng ignore của 111 phủ box của 222.
+C385,img_023.jpg,bat_dong_ignore,111|222,,motorcycle,,"[450,188,33,33]",,Chỉ vùng ignore của 111 phủ box của 222.
+C386,img_023.jpg,bat_dong_ignore,111|222,,motorcycle,,"[446,175,51,42]",,Chỉ vùng ignore của 111 phủ box của 222.
+C387,img_023.jpg,bat_dong_ignore,111|222,,motorcycle,,"[402,173,55,51]",,Chỉ vùng ignore của 111 phủ box của 222.
+C388,img_023.jpg,bat_dong_ignore,111|222,,motorcycle,,"[393,187,36,40]",,Chỉ vùng ignore của 111 phủ box của 222.
+C389,img_023.jpg,bat_dong_ignore,111|222,,motorcycle,,"[420,188,16,39]",,Chỉ vùng ignore của 111 phủ box của 222.
+C390,img_023.jpg,bo_sot_thua,111|222,rider,,"[625,8,127,426]",,,Chỉ 111 vẽ rider này. 222 bỏ sót hoặc 111 vẽ thừa.
+C391,img_023.jpg,bo_sot_thua,111|222,motorcycle,,"[508,212,42,60]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C392,img_023.jpg,bo_sot_thua,111|222,motorcycle,,"[758,200,24,50]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C393,img_023.jpg,bo_sot_thua,111|222,,motorcycle,,"[565,183,17,28]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C394,img_023.jpg,bo_sot_thua,111|222,,pedestrian,,"[88,130,28,65]",,Chỉ 222 vẽ pedestrian này. 111 bỏ sót hoặc 222 vẽ thừa.
+C395,img_023.jpg,co_can_review,111,motorcycle,,"[758,200,24,50]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C396,img_023.jpg,co_can_review,111,rider,,"[896,200,64,118]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C397,img_023.jpg,co_can_review,111,motorcycle,,"[902,224,58,96]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C398,img_023.jpg,iou_thap,111|222,pedestrian,pedestrian,"[55,125,47,127]","[49,125,52,132]",0.84,IoU 0.84 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C399,img_023.jpg,iou_thap,111|222,motorcycle,motorcycle,"[902,224,58,96]","[900,223,60,80]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C400,img_023.jpg,iou_thap,111|222,rider,rider,"[750,162,34,78]","[749,163,33,92]",0.75,IoU 0.75 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C401,img_023.jpg,iou_thap,111|222,rider,rider,"[505,160,45,90]","[503,159,47,114]",0.75,IoU 0.75 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C402,img_023.jpg,iou_thap,111|222,bicycle,rider,"[575,185,215,347]","[567,8,225,527]",0.63,IoU 0.63 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C403,img_023.jpg,sai_lop,111|222,rider,pedestrian,"[896,200,64,118]","[899,199,61,124]",0.90,"111 gán rider, 222 gán pedestrian cho cùng một vật"
+C404,img_023.jpg,sai_lop,111|222,bicycle,rider,"[575,185,215,347]","[567,8,225,527]",0.63,"111 gán bicycle, 222 gán rider cho cùng một vật"
+C405,img_023.jpg,sai_thuoc_tinh,111|222,rider,pedestrian,"[896,200,64,118]","[899,199,61,124]",0.90,occluded_level: 111=1 vs 222=0; truncated: 111=yes vs 222=no
+C406,img_023.jpg,sai_thuoc_tinh,111|222,pedestrian,pedestrian,"[55,125,47,127]","[49,125,52,132]",0.84,occluded_level: 111=1 vs 222=0
+C407,img_023.jpg,sai_thuoc_tinh,111|222,motorcycle,motorcycle,"[902,224,58,96]","[900,223,60,80]",0.80,occluded_level: 111=1 vs 222=3
+C408,img_023.jpg,sai_thuoc_tinh,111|222,rider,rider,"[750,162,34,78]","[749,163,33,92]",0.75,occluded_level: 111=1 vs 222=2
+C409,img_023.jpg,sai_thuoc_tinh,111|222,bicycle,rider,"[575,185,215,347]","[567,8,225,527]",0.63,occluded_level: 111=0 vs 222=1; truncated: 111=no vs 222=yes
+C410,img_024.jpg,bat_dong_ignore,111|333,,,"[690,188,270,24]",,,Vùng ignore không ghép được với vùng của người kia.
+C411,img_024.jpg,co_can_review,111,car,,"[170,205,142,65]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C412,img_024.jpg,sai_thuoc_tinh,111|333,car,car,"[170,205,142,65]","[171,206,141,63]",0.96,occluded_level: 111=3 vs 333=2
+C413,img_024.jpg,sai_thuoc_tinh,111|333,car,car,"[0,205,235,230]","[0,200,229,235]",0.95,occluded_level: 111=1 vs 333=0
+C414,img_024.jpg,sai_thuoc_tinh,111|333,car,car,"[695,222,233,180]","[699,218,227,182]",0.94,occluded_level: 111=1 vs 333=0
+C415,img_024.jpg,sai_thuoc_tinh,111|333,car,car,"[835,212,125,118]","[851,211,109,117]",0.85,occluded_level: 111=2 vs 333=1
+C416,img_025.jpg,bat_dong_ignore,111|222,,,"[20,358,428,54]",,,Vùng ignore không ghép được với vùng của người kia.
+C417,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[432,359,16,36]",,Chỉ vùng ignore của 111 phủ box của 222.
+C418,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[414,360,25,41]",,Chỉ vùng ignore của 111 phủ box của 222.
+C419,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[383,362,25,40]",,Chỉ vùng ignore của 111 phủ box của 222.
+C420,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[367,362,18,25]",,Chỉ vùng ignore của 111 phủ box của 222.
+C421,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[349,371,13,20]",,Chỉ vùng ignore của 111 phủ box của 222.
+C422,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[252,378,15,23]",,Chỉ vùng ignore của 111 phủ box của 222.
+C423,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[223,362,12,24]",,Chỉ vùng ignore của 111 phủ box của 222.
+C424,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[150,369,23,27]",,Chỉ vùng ignore của 111 phủ box của 222.
+C425,img_025.jpg,bat_dong_ignore,111|222,,pedestrian,,"[34,382,58,47]",,Chỉ vùng ignore của 111 phủ box của 222.
+C426,img_025.jpg,bo_sot_thua,111|222,motorcycle,,"[805,378,130,68]",,,Chỉ 111 vẽ motorcycle này. 222 bỏ sót hoặc 111 vẽ thừa.
+C427,img_025.jpg,bo_sot_thua,111|222,car,,"[918,342,42,60]",,,Chỉ 111 vẽ car này. 222 bỏ sót hoặc 111 vẽ thừa.
+C428,img_025.jpg,bo_sot_thua,111|222,,car,,"[648,354,21,23]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C429,img_025.jpg,bo_sot_thua,111|222,,car,,"[687,358,25,34]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C430,img_025.jpg,bo_sot_thua,111|222,,car,,"[786,352,41,36]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C431,img_025.jpg,bo_sot_thua,111|222,,car,,"[881,341,79,76]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C432,img_025.jpg,bo_sot_thua,111|222,,car,,"[852,349,38,34]",,Chỉ 222 vẽ car này. 111 bỏ sót hoặc 222 vẽ thừa.
+C433,img_025.jpg,co_can_review,111,motorcycle,,"[805,378,130,68]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C434,img_025.jpg,iou_thap,111|222,car,car,"[745,345,60,57]","[745,345,64,63]",0.84,IoU 0.84 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C435,img_025.jpg,iou_thap,111|222,rider,rider,"[815,355,47,70]","[804,353,57,91]",0.61,IoU 0.61 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C436,img_025.jpg,sai_thuoc_tinh,111|222,car,car,"[745,345,60,57]","[745,345,64,63]",0.84,occluded_level: 111=1 vs 222=2
+C437,img_025.jpg,sai_thuoc_tinh,111|222,rider,rider,"[815,355,47,70]","[804,353,57,91]",0.61,occluded_level: 111=1 vs 222=0
+C438,img_026.jpg,sai_thuoc_tinh,111|333,rider,rider,"[365,540,237,465]","[363,540,239,466]",0.99,occluded_level: 111=0 vs 333=1
+C439,img_026.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[235,716,470,308]","[232,733,475,291]",0.94,occluded_level: 111=1 vs 333=0
+C440,img_026.jpg,sai_thuoc_tinh,111|333,rider,rider,"[275,538,215,452]","[275,536,205,468]",0.92,occluded_level: 111=1 vs 333=2
+C441,img_028.jpg,bo_sot_thua,111|222,truck,,"[28,303,902,397]",,,Chỉ 111 vẽ truck này. 222 bỏ sót hoặc 111 vẽ thừa.
+C442,img_029.jpg,bo_sot_thua,222|333,car,,"[250,200,14,23]",,,Chỉ 222 vẽ car này. 333 bỏ sót hoặc 222 vẽ thừa.
+C443,img_029.jpg,bo_sot_thua,222|333,car,,"[290,199,15,30]",,,Chỉ 222 vẽ car này. 333 bỏ sót hoặc 222 vẽ thừa.
+C444,img_029.jpg,bo_sot_thua,222|333,rider,,"[57,117,849,262]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C445,img_029.jpg,bo_sot_thua,222|333,,bicycle,,"[213,226,26,51]",,Chỉ 333 vẽ bicycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C446,img_029.jpg,bo_sot_thua,222|333,,rider,,"[610,109,122,287]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C447,img_029.jpg,bo_sot_thua,222|333,,rider,,"[414,162,79,217]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C448,img_029.jpg,bo_sot_thua,222|333,,bicycle,,"[115,225,30,65]",,Chỉ 333 vẽ bicycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C449,img_029.jpg,bo_sot_thua,222|333,,motorcycle,,"[331,209,226,164]",,Chỉ 333 vẽ motorcycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C450,img_029.jpg,bo_sot_thua,222|333,,bicycle,,"[275,215,19,28]",,Chỉ 333 vẽ bicycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C451,img_029.jpg,co_can_review,333,rider,,"[610,109,122,287]",,,"333 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C452,img_029.jpg,co_can_review,333,rider,,"[414,162,79,217]",,,"333 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C453,img_029.jpg,iou_thap,222|333,pedestrian,pedestrian,"[183,174,44,122]","[182,170,44,97]",0.72,IoU 0.72 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C454,img_029.jpg,iou_thap,222|333,rider,rider,"[105,182,47,105]","[112,181,39,91]",0.70,IoU 0.70 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C455,img_029.jpg,iou_thap,222|333,rider,rider,"[214,183,34,96]","[218,181,27,74]",0.58,IoU 0.58 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C456,img_029.jpg,iou_thap,222|333,rider,bicycle,"[537,107,264,292]","[538,235,261,155]",0.52,IoU 0.52 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C457,img_029.jpg,sai_lop,222|333,rider,bicycle,"[537,107,264,292]","[538,235,261,155]",0.52,"222 gán rider, 333 gán bicycle cho cùng một vật"
+C458,img_029.jpg,sai_thuoc_tinh,222|333,pedestrian,pedestrian,"[347,189,21,28]","[348,189,18,28]",0.86,occluded_level: 222=2 vs 333=0
+C459,img_029.jpg,sai_thuoc_tinh,222|333,rider,rider,"[277,193,22,47]","[276,189,24,45]",0.75,occluded_level: 222=2 vs 333=1
+C460,img_029.jpg,sai_thuoc_tinh,222|333,pedestrian,pedestrian,"[183,174,44,122]","[182,170,44,97]",0.72,occluded_level: 222=1 vs 333=0
+C461,img_029.jpg,sai_thuoc_tinh,222|333,rider,rider,"[214,183,34,96]","[218,181,27,74]",0.58,occluded_level: 222=2 vs 333=1
+C462,img_030.jpg,bat_dong_ignore,111|333,,,"[0,260,340,105]",,,Vùng ignore không ghép được với vùng của người kia.
+C463,img_030.jpg,bo_sot_thua,111|333,,motorcycle,,"[499,265,461,455]",,Chỉ 333 vẽ motorcycle này. 111 bỏ sót hoặc 333 vẽ thừa.
+C464,img_030.jpg,iou_thap,111|333,motorcycle,motorcycle,"[345,262,445,458]","[345,288,574,432]",0.74,IoU 0.74 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C465,img_030.jpg,iou_thap,111|333,motorcycle,motorcycle,"[770,320,190,400]","[635,292,325,428]",0.55,IoU 0.55 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C466,img_030.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[60,365,410,355]","[66,372,409,348]",0.95,occluded_level: 111=1 vs 333=2
+C467,img_030.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[700,25,82,247]","[697,24,83,248]",0.94,occluded_level: 111=1 vs 333=0
+C468,img_030.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[345,262,445,458]","[345,288,574,432]",0.74,truncated: 111=yes vs 333=no
+C469,img_031.jpg,bat_dong_ignore,222|333,,,,"[642,315,44,113]",,Vùng ignore không ghép được với vùng của người kia.
+C470,img_031.jpg,bat_dong_ignore,222|333,,,,"[568,310,74,114]",,Vùng ignore không ghép được với vùng của người kia.
+C471,img_031.jpg,bo_sot_thua,222|333,pedestrian,,"[429,358,17,29]",,,Chỉ 222 vẽ pedestrian này. 333 bỏ sót hoặc 222 vẽ thừa.
+C472,img_031.jpg,bo_sot_thua,222|333,rider,,"[468,360,20,17]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C473,img_031.jpg,bo_sot_thua,222|333,rider,,"[447,362,21,15]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C474,img_031.jpg,bo_sot_thua,222|333,rider,,"[385,358,16,33]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C475,img_031.jpg,bo_sot_thua,222|333,rider,,"[716,356,19,30]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C476,img_031.jpg,bo_sot_thua,222|333,pedestrian,,"[363,356,14,17]",,,Chỉ 222 vẽ pedestrian này. 333 bỏ sót hoặc 222 vẽ thừa.
+C477,img_031.jpg,bo_sot_thua,222|333,car,,"[503,361,46,16]",,,Chỉ 222 vẽ car này. 333 bỏ sót hoặc 222 vẽ thừa.
+C478,img_031.jpg,bo_sot_thua,222|333,pedestrian,,"[377,356,11,26]",,,Chỉ 222 vẽ pedestrian này. 333 bỏ sót hoặc 222 vẽ thừa.
+C479,img_031.jpg,bo_sot_thua,222|333,,rider,,"[403,362,29,46]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C480,img_031.jpg,bo_sot_thua,222|333,,rider,,"[235,375,24,42]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C481,img_031.jpg,bo_sot_thua,222|333,,rider,,"[64,373,40,67]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C482,img_031.jpg,iou_thap,222|333,pedestrian,pedestrian,"[201,364,16,57]","[200,364,15,54]",0.83,IoU 0.83 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C483,img_031.jpg,iou_thap,222|333,pedestrian,pedestrian,"[164,373,18,56]","[162,369,19,61]",0.82,IoU 0.82 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C484,img_031.jpg,iou_thap,222|333,rider,motorcycle,"[405,363,27,57]","[404,374,27,46]",0.78,IoU 0.78 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C485,img_031.jpg,iou_thap,222|333,pedestrian,pedestrian,"[216,374,12,47]","[212,372,16,48]",0.70,IoU 0.70 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C486,img_031.jpg,iou_thap,222|333,rider,motorcycle,"[58,371,49,89]","[62,397,44,64]",0.65,IoU 0.65 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C487,img_031.jpg,iou_thap,222|333,pedestrian,pedestrian,"[191,363,12,62]","[188,359,19,67]",0.60,IoU 0.60 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C488,img_031.jpg,iou_thap,222|333,rider,motorcycle,"[231,374,40,59]","[232,387,28,48]",0.54,IoU 0.54 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C489,img_031.jpg,sai_lop,222|333,rider,motorcycle,"[405,363,27,57]","[404,374,27,46]",0.78,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C490,img_031.jpg,sai_lop,222|333,rider,motorcycle,"[58,371,49,89]","[62,397,44,64]",0.65,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C491,img_031.jpg,sai_lop,222|333,rider,motorcycle,"[231,374,40,59]","[232,387,28,48]",0.54,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C492,img_031.jpg,sai_thuoc_tinh,222|333,car,car,"[520,373,94,75]","[520,373,92,75]",0.96,occluded_level: 222=0 vs 333=1
+C493,img_031.jpg,sai_thuoc_tinh,222|333,car,car,"[429,375,79,55]","[427,371,80,60]",0.89,occluded_level: 222=0 vs 333=1
+C494,img_031.jpg,sai_thuoc_tinh,222|333,rider,motorcycle,"[405,363,27,57]","[404,374,27,46]",0.78,occluded_level: 222=0 vs 333=1
+C495,img_031.jpg,sai_thuoc_tinh,222|333,rider,motorcycle,"[231,374,40,59]","[232,387,28,48]",0.54,occluded_level: 222=0 vs 333=1
+C496,img_032.jpg,bat_dong_ignore,111|333,,,"[0,255,98,87]",,,Vùng ignore không ghép được với vùng của người kia.
+C497,img_032.jpg,bat_dong_ignore,111|333,,,"[918,272,42,48]",,,Vùng ignore không ghép được với vùng của người kia.
+C498,img_032.jpg,bat_dong_ignore,111|333,,,,"[0,236,153,78]",,Vùng ignore không ghép được với vùng của người kia.
+C499,img_032.jpg,bat_dong_ignore,111|333,pedestrian,,"[780,272,30,96]",,,Chỉ vùng ignore của 333 phủ box của 111.
+C500,img_032.jpg,bat_dong_ignore,111|333,,car,,"[928,277,32,59]",,Chỉ vùng ignore của 111 phủ box của 333.
+C501,img_032.jpg,bo_sot_thua,111|333,,pedestrian,,"[794,271,22,99]",,Chỉ 333 vẽ pedestrian này. 111 bỏ sót hoặc 333 vẽ thừa.
+C502,img_032.jpg,bo_sot_thua,111|333,,car,,"[882,278,27,37]",,Chỉ 333 vẽ car này. 111 bỏ sót hoặc 333 vẽ thừa.
+C503,img_032.jpg,iou_thap,111|333,pedestrian,pedestrian,"[832,282,32,88]","[828,282,34,87]",0.82,IoU 0.82 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C504,img_032.jpg,iou_thap,111|333,car,van,"[690,270,67,70]","[684,267,75,96]",0.65,IoU 0.65 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C505,img_032.jpg,sai_lop,111|333,car,van,"[690,270,67,70]","[684,267,75,96]",0.65,"111 gán car, 333 gán van cho cùng một vật"
+C506,img_032.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[832,282,32,88]","[828,282,34,87]",0.82,occluded_level: 111=0 vs 333=1
+C507,img_032.jpg,sai_thuoc_tinh,111|333,car,car,"[838,277,66,37]","[839,275,53,40]",0.75,occluded_level: 111=1 vs 333=0
+C508,img_034.jpg,bo_sot_thua,222|333,rider,,"[150,232,26,55]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C509,img_034.jpg,bo_sot_thua,222|333,rider,,"[184,231,16,29]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C510,img_034.jpg,bo_sot_thua,222|333,rider,,"[622,240,16,42]",,,Chỉ 222 vẽ rider này. 333 bỏ sót hoặc 222 vẽ thừa.
+C511,img_034.jpg,bo_sot_thua,222|333,,motorcycle,,"[646,265,30,55]",,Chỉ 333 vẽ motorcycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C512,img_034.jpg,bo_sot_thua,222|333,,motorcycle,,"[877,340,83,200]",,Chỉ 333 vẽ motorcycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C513,img_034.jpg,bo_sot_thua,222|333,,motorcycle,,"[826,272,43,67]",,Chỉ 333 vẽ motorcycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C514,img_034.jpg,bo_sot_thua,222|333,,motorcycle,,"[776,267,32,51]",,Chỉ 333 vẽ motorcycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C515,img_034.jpg,bo_sot_thua,222|333,,rider,,"[733,236,21,34]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C516,img_034.jpg,bo_sot_thua,222|333,,rider,,"[62,224,29,49]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C517,img_034.jpg,bo_sot_thua,222|333,,motorcycle,,"[160,257,43,32]",,Chỉ 333 vẽ motorcycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C518,img_034.jpg,bo_sot_thua,222|333,,rider,,"[250,222,30,61]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C519,img_034.jpg,bo_sot_thua,222|333,,rider,,"[274,218,36,66]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C520,img_034.jpg,bo_sot_thua,222|333,,bicycle,,"[588,249,57,68]",,Chỉ 333 vẽ bicycle này. 222 bỏ sót hoặc 333 vẽ thừa.
+C521,img_034.jpg,iou_thap,222|333,rider,rider,"[860,159,100,381]","[861,157,99,309]",0.79,IoU 0.79 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C522,img_034.jpg,iou_thap,222|333,rider,rider,"[642,228,39,92]","[640,225,41,80]",0.78,IoU 0.78 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C523,img_034.jpg,iou_thap,222|333,rider,rider,"[767,230,42,88]","[768,226,40,79]",0.77,IoU 0.77 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C524,img_034.jpg,iou_thap,222|333,rider,rider,"[817,221,60,118]","[818,217,52,100]",0.69,IoU 0.69 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C525,img_034.jpg,iou_thap,222|333,rider,motorcycle,"[281,233,29,52]","[280,247,30,39]",0.68,IoU 0.68 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C526,img_034.jpg,iou_thap,222|333,rider,motorcycle,"[49,227,50,65]","[48,246,49,46]",0.67,IoU 0.67 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C527,img_034.jpg,iou_thap,222|333,rider,motorcycle,"[250,234,35,54]","[248,250,36,39]",0.65,IoU 0.65 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C528,img_034.jpg,iou_thap,222|333,rider,rider,"[575,227,62,77]","[595,224,39,72]",0.56,IoU 0.56 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C529,img_034.jpg,iou_thap,222|333,rider,motorcycle,"[735,241,24,46]","[734,258,24,31]",0.55,IoU 0.55 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C530,img_034.jpg,iou_thap,222|333,rider,rider,"[163,232,39,56]","[168,230,26,50]",0.55,IoU 0.55 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C531,img_034.jpg,sai_lop,222|333,rider,motorcycle,"[281,233,29,52]","[280,247,30,39]",0.68,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C532,img_034.jpg,sai_lop,222|333,rider,motorcycle,"[49,227,50,65]","[48,246,49,46]",0.67,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C533,img_034.jpg,sai_lop,222|333,rider,motorcycle,"[250,234,35,54]","[248,250,36,39]",0.65,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C534,img_034.jpg,sai_lop,222|333,rider,motorcycle,"[735,241,24,46]","[734,258,24,31]",0.55,"222 gán rider, 333 gán motorcycle cho cùng một vật"
+C535,img_034.jpg,sai_thuoc_tinh,222|333,car,car,"[357,226,232,87]","[355,226,236,84]",0.95,occluded_level: 222=1 vs 333=0
+C536,img_034.jpg,sai_thuoc_tinh,222|333,rider,rider,"[860,159,100,381]","[861,157,99,309]",0.79,occluded_level: 222=0 vs 333=1
+C537,img_034.jpg,sai_thuoc_tinh,222|333,rider,rider,"[817,221,60,118]","[818,217,52,100]",0.69,occluded_level: 222=1 vs 333=0
+C538,img_034.jpg,sai_thuoc_tinh,222|333,rider,motorcycle,"[281,233,29,52]","[280,247,30,39]",0.68,occluded_level: 222=0 vs 333=1
+C539,img_034.jpg,sai_thuoc_tinh,222|333,rider,motorcycle,"[250,234,35,54]","[248,250,36,39]",0.65,occluded_level: 222=0 vs 333=1
+C540,img_034.jpg,sai_thuoc_tinh,222|333,rider,motorcycle,"[735,241,24,46]","[734,258,24,31]",0.55,occluded_level: 222=0 vs 333=1
+C541,img_034.jpg,sai_thuoc_tinh,222|333,rider,rider,"[163,232,39,56]","[168,230,26,50]",0.55,occluded_level: 222=0 vs 333=1
+C542,img_035.jpg,bat_dong_ignore,111|333,,,"[215,205,81,27]",,,Vùng ignore không ghép được với vùng của người kia.
+C543,img_035.jpg,bo_sot_thua,111|333,three_wheeler,,"[380,205,168,210]",,,Chỉ 111 vẽ three_wheeler này. 333 bỏ sót hoặc 111 vẽ thừa.
+C544,img_035.jpg,bo_sot_thua,111|333,rider,,"[464,231,20,44]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C545,img_035.jpg,bo_sot_thua,111|333,pedestrian,,"[651,233,14,24]",,,Chỉ 111 vẽ pedestrian này. 333 bỏ sót hoặc 111 vẽ thừa.
+C546,img_035.jpg,bo_sot_thua,111|333,,three_wheeler,,"[337,28,238,387]",,Chỉ 333 vẽ three_wheeler này. 111 bỏ sót hoặc 333 vẽ thừa.
+C547,img_035.jpg,bo_sot_thua,111|333,,rider,,"[781,225,38,61]",,Chỉ 333 vẽ rider này. 111 bỏ sót hoặc 333 vẽ thừa.
+C548,img_035.jpg,co_can_review,111,rider,,"[418,225,40,55]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C549,img_035.jpg,co_can_review,111,rider,,"[464,231,20,44]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C550,img_035.jpg,co_can_review,111,rider,,"[938,239,22,43]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C551,img_035.jpg,co_can_review,111,motorcycle,,"[944,262,16,38]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C552,img_035.jpg,co_can_review,333,three_wheeler,,"[337,28,238,387]",,,"333 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C553,img_035.jpg,iou_thap,111|333,motorcycle,motorcycle,"[296,270,88,70]","[292,263,92,75]",0.85,IoU 0.85 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C554,img_035.jpg,iou_thap,111|333,rider,rider,"[418,225,40,55]","[422,222,42,58]",0.75,IoU 0.75 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C555,img_035.jpg,iou_thap,111|333,pedestrian,rider,"[668,234,20,30]","[667,234,23,37]",0.67,IoU 0.67 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C556,img_035.jpg,iou_thap,111|333,motorcycle,motorcycle,"[944,262,16,38]","[948,269,12,29]",0.59,IoU 0.59 < ngưỡng 0.7 (box lệch/lỏng/thiếu phần vật)
+C557,img_035.jpg,sai_lop,111|333,pedestrian,rider,"[668,234,20,30]","[667,234,23,37]",0.67,"111 gán pedestrian, 333 gán rider cho cùng một vật"
+C558,img_035.jpg,sai_thuoc_tinh,111|333,three_wheeler,three_wheeler,"[745,215,95,193]","[747,212,96,209]",0.88,occluded_level: 111=2 vs 333=0
+C559,img_035.jpg,sai_thuoc_tinh,111|333,rider,rider,"[938,239,22,43]","[939,240,21,47]",0.85,truncated: 111=yes vs 333=no
+C560,img_035.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[570,223,20,30]","[568,221,24,31]",0.76,occluded_level: 111=2 vs 333=0
+C561,img_035.jpg,sai_thuoc_tinh,111|333,rider,rider,"[418,225,40,55]","[422,222,42,58]",0.75,occluded_level: 111=2 vs 333=1
+C562,img_035.jpg,sai_thuoc_tinh,111|333,pedestrian,rider,"[668,234,20,30]","[667,234,23,37]",0.67,occluded_level: 111=2 vs 333=0
+C563,img_035.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[944,262,16,38]","[948,269,12,29]",0.59,truncated: 111=yes vs 333=no
+C564,img_036.jpg,bat_dong_ignore,111|222,,,"[0,170,105,165]",,,Vùng ignore không ghép được với vùng của người kia.
+C565,img_036.jpg,bat_dong_ignore,111|222,,,"[790,185,170,85]",,,Vùng ignore không ghép được với vùng của người kia.
+C566,img_036.jpg,bat_dong_ignore,111|222,,,"[860,270,100,60]",,,Vùng ignore không ghép được với vùng của người kia.
+C567,img_036.jpg,bat_dong_ignore,111|222,,car,,"[16,141,72,59]",,Chỉ vùng ignore của 111 phủ box của 222.
+C568,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[0,198,42,98]",,Chỉ vùng ignore của 111 phủ box của 222.
+C569,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[14,180,73,129]",,Chỉ vùng ignore của 111 phủ box của 222.
+C570,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[80,260,22,73]",,Chỉ vùng ignore của 111 phủ box của 222.
+C571,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[40,190,55,139]",,Chỉ vùng ignore của 111 phủ box của 222.
+C572,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[760,184,91,79]",,Chỉ vùng ignore của 111 phủ box của 222.
+C573,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[784,194,128,108]",,Chỉ vùng ignore của 111 phủ box của 222.
+C574,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[834,198,125,118]",,Chỉ vùng ignore của 111 phủ box của 222.
+C575,img_036.jpg,bat_dong_ignore,111|222,,motorcycle,,"[889,227,71,101]",,Chỉ vùng ignore của 111 phủ box của 222.
+C576,img_036.jpg,bo_sot_thua,111|222,,motorcycle,,"[760,181,39,52]",,Chỉ 222 vẽ motorcycle này. 111 bỏ sót hoặc 222 vẽ thừa.
+C577,img_037.jpg,bat_dong_ignore,111|222,,,"[0,218,238,174]",,,Vùng ignore không ghép được với vùng của người kia.
+C578,img_037.jpg,bat_dong_ignore,111|222,,,"[715,232,53,116]",,,Vùng ignore không ghép được với vùng của người kia.
+C579,img_037.jpg,bat_dong_ignore,111|222,,,"[258,256,110,56]",,,Vùng ignore không ghép được với vùng của người kia.
+C580,img_037.jpg,bat_dong_ignore,111|222,,car,,"[714,232,54,124]",,Chỉ vùng ignore của 111 phủ box của 222.
+C581,img_037.jpg,bat_dong_ignore,111|222,,car,,"[0,216,239,178]",,Chỉ vùng ignore của 111 phủ box của 222.
+C582,img_037.jpg,sai_lop,111|222,truck,car,"[220,135,505,362]","[218,139,513,359]",0.97,"111 gán truck, 222 gán car cho cùng một vật"
+C583,img_039.jpg,bat_dong_ignore,111|333,,,"[460,424,86,58]",,,Vùng ignore không ghép được với vùng của người kia.
+C584,img_039.jpg,bat_dong_ignore,111|333,,,"[818,440,22,32]",,,Vùng ignore không ghép được với vùng của người kia.
+C585,img_039.jpg,bat_dong_ignore,111|333,,motorcycle,,"[460,424,41,60]",,Chỉ vùng ignore của 111 phủ box của 333.
+C586,img_039.jpg,bat_dong_ignore,111|333,,motorcycle,,"[498,425,33,52]",,Chỉ vùng ignore của 111 phủ box của 333.
+C587,img_039.jpg,bat_dong_ignore,111|333,,motorcycle,,"[522,424,30,48]",,Chỉ vùng ignore của 111 phủ box của 333.
+C588,img_039.jpg,bo_sot_thua,111|333,rider,,"[678,416,17,36]",,,Chỉ 111 vẽ rider này. 333 bỏ sót hoặc 111 vẽ thừa.
+C589,img_039.jpg,bo_sot_thua,111|333,motorcycle,,"[680,432,16,26]",,,Chỉ 111 vẽ motorcycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C590,img_039.jpg,bo_sot_thua,111|333,bicycle,,"[772,430,44,60]",,,Chỉ 111 vẽ bicycle này. 333 bỏ sót hoặc 111 vẽ thừa.
+C591,img_039.jpg,bo_sot_thua,111|333,car,,"[646,411,23,29]",,,Chỉ 111 vẽ car này. 333 bỏ sót hoặc 111 vẽ thừa.
+C592,img_039.jpg,bo_sot_thua,111|333,,motorcycle,,"[603,427,25,41]",,Chỉ 333 vẽ motorcycle này. 111 bỏ sót hoặc 333 vẽ thừa.
+C593,img_039.jpg,co_can_review,111,bicycle,,"[772,430,44,60]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C594,img_039.jpg,co_can_review,111,car,,"[646,411,23,29]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C595,img_039.jpg,co_can_review,111,motorcycle,,"[932,460,28,72]",,,"111 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C596,img_039.jpg,iou_thap,111|333,pedestrian,pedestrian,"[547,412,22,77]","[545,410,23,80]",0.84,IoU 0.84 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C597,img_039.jpg,iou_thap,111|333,rider,rider,"[698,411,29,76]","[696,407,33,82]",0.81,IoU 0.81 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C598,img_039.jpg,iou_thap,111|333,bicycle,bicycle,"[700,446,22,51]","[697,444,24,54]",0.80,IoU 0.80 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C599,img_039.jpg,iou_thap,111|333,motorcycle,motorcycle,"[742,440,48,63]","[740,438,43,68]",0.77,IoU 0.77 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C600,img_039.jpg,iou_thap,111|333,pedestrian,pedestrian,"[864,403,25,95]","[862,400,28,74]",0.66,IoU 0.66 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C601,img_039.jpg,iou_thap,111|333,rider,rider,"[733,405,59,98]","[738,402,37,102]",0.61,IoU 0.61 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C602,img_039.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[567,414,18,75]","[566,412,20,77]",0.88,occluded_level: 111=1 vs 333=0
+C603,img_039.jpg,sai_thuoc_tinh,111|333,rider,rider,"[625,410,34,70]","[625,412,34,61]",0.88,occluded_level: 111=1 vs 333=0
+C604,img_039.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[622,437,38,60]","[620,433,41,64]",0.87,occluded_level: 111=1 vs 333=0
+C605,img_039.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[15,415,37,82]","[16,414,40,83]",0.87,occluded_level: 111=2 vs 333=1
+C606,img_039.jpg,sai_thuoc_tinh,111|333,car,car,"[785,408,47,32]","[782,405,50,35]",0.86,occluded_level: 111=2 vs 333=1
+C607,img_039.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[583,414,24,75]","[585,413,23,77]",0.86,occluded_level: 111=1 vs 333=0
+C608,img_039.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[547,412,22,77]","[545,410,23,80]",0.84,occluded_level: 111=1 vs 333=0
+C609,img_039.jpg,sai_thuoc_tinh,111|333,motorcycle,motorcycle,"[742,440,48,63]","[740,438,43,68]",0.77,occluded_level: 111=1 vs 333=0
+C610,img_039.jpg,sai_thuoc_tinh,111|333,pedestrian,pedestrian,"[864,403,25,95]","[862,400,28,74]",0.66,occluded_level: 111=1 vs 333=0
+C611,img_039.jpg,sai_thuoc_tinh,111|333,rider,rider,"[733,405,59,98]","[738,402,37,102]",0.61,occluded_level: 111=1 vs 333=0
+C612,img_040.jpg,bat_dong_ignore,222|333,,,,"[100,0,370,114]",,Vùng ignore không ghép được với vùng của người kia.
+C613,img_040.jpg,bat_dong_ignore,222|333,car,,"[96,0,373,117]",,,Chỉ vùng ignore của 333 phủ box của 222.
+C614,img_040.jpg,bo_sot_thua,222|333,motorcycle,,"[72,103,756,537]",,,Chỉ 222 vẽ motorcycle này. 333 bỏ sót hoặc 222 vẽ thừa.
+C615,img_040.jpg,bo_sot_thua,222|333,,rider,,"[443,129,78,139]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C616,img_040.jpg,bo_sot_thua,222|333,,car,,"[0,112,76,104]",,Chỉ 333 vẽ car này. 222 bỏ sót hoặc 333 vẽ thừa.
+C617,img_040.jpg,bo_sot_thua,222|333,,rider,,"[482,106,347,534]",,Chỉ 333 vẽ rider này. 222 bỏ sót hoặc 333 vẽ thừa.
+C618,img_040.jpg,sai_thuoc_tinh,222|333,three_wheeler,three_wheeler,"[307,66,535,348]","[301,65,538,346]",0.97,occluded_level: 222=2 vs 333=1
+C619,img_040.jpg,sai_thuoc_tinh,222|333,car,car,"[17,141,943,499]","[16,187,944,453]",0.91,occluded_level: 222=2 vs 333=1
