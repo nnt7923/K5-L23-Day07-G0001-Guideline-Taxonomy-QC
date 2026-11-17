@@ -12,6 +12,8 @@ from PIL import Image
 
 
 SOURCE = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(SOURCE / "scripts"))
+from calibration import calibration_decisions_match
 
 
 class WorkflowTest(unittest.TestCase):
@@ -143,6 +145,22 @@ class WorkflowTest(unittest.TestCase):
         snapshot = self.qc / "reviews" / "round-01" / "calibration_decisions_snapshot.csv"
         snapshot.write_text("invalid\n")
         self.assertIn("**HOLD**", self.run_script("qc_report"))
+
+    def test_calibration_recheck_can_change_but_decisions_cannot(self):
+        fields = self.decision_fields()
+        original = ["C01", self.names[0], "Giữ box", "R-01", "v1.1", "101", "CVAT #1",
+                    "phân công 103; chưa kiểm", "anh"]
+        current = self.root / "current.csv"
+        snapshot = self.root / "snapshot.csv"
+        self.write_csv(current, fields, [original])
+        self.write_csv(snapshot, fields, [original])
+        updated = original.copy()
+        updated[7] = "103: đã kiểm, đạt"
+        self.write_csv(current, fields, [updated])
+        self.assertTrue(calibration_decisions_match(current, snapshot))
+        updated[2] = "Thay đổi quyết định"
+        self.write_csv(current, fields, [updated])
+        self.assertFalse(calibration_decisions_match(current, snapshot))
 
     def test_build_rejects_final_output_as_corrected_input(self):
         self.clean_lot()

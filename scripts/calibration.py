@@ -1,6 +1,7 @@
 """Bằng chứng đầu vào và phạm vi ảnh cần sửa theo quyết định calibration."""
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -15,6 +16,19 @@ DECISION_COLUMNS = [
     "case_id", "image", "quyet_dinh", "quy_tac_ghi_vao_guideline",
     "phien_ban_guideline", "nguoi_chot", "phieu_sua", "kiem_lai", "pham_vi",
 ]
+
+
+def calibration_decisions_match(current: Path, snapshot: Path) -> bool:
+    def without_recheck(path):
+        with path.open(encoding="utf-8", newline="") as stream:
+            reader = csv.DictReader(stream)
+            fields = reader.fieldnames or []
+            if "kiem_lai" not in fields:
+                raise ValueError(f"{path.name} thiếu cột kiem_lai.")
+            fields = [field for field in fields if field != "kiem_lai"]
+            return fields, [tuple(row.get(field) for field in fields) for row in reader]
+
+    return without_recheck(current) == without_recheck(snapshot)
 
 
 def calibration_export_path(scope) -> Path:
