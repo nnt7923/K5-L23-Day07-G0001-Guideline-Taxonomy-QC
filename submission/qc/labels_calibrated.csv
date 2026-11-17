@@ -40,7 +40,7 @@ img_004.jpg,rider,575.0,151.0,87.0,198.0,0,no,calibration
 img_005.jpg,van,70.0,26.0,890.0,328.0,2,yes,calibration
 img_005.jpg,rider,31.0,220.0,419.0,420.0,0,yes,calibration
 img_005.jpg,motorcycle,0.0,294.0,212.0,346.0,2,yes,calibration
-img_005.jpg,rider,436.0,32.0,446.0,564.0,2,no,calibration
+img_005.jpg,rider,436.0,32.0,264.0,564.0,2,no,calibration
 img_005.jpg,van,0.0,75.0,77.0,89.0,1,yes,calibration
 img_005.jpg,rider,320.0,115.0,172.0,170.0,2,no,calibration
 img_005.jpg,motorcycle,760.0,320.0,200.0,320.0,1,yes,calibration
@@ -390,7 +390,7 @@ img_032.jpg,pedestrian,780.0,272.0,30.0,96.0,0,no,calibration
 img_032.jpg,car,928.0,277.0,32.0,59.0,1,yes,calibration
 img_032.jpg,car,882.0,278.0,27.0,37.0,1,no,calibration
 img_034.jpg,pedestrian,358.0,162.0,146.0,276.0,0,no,calibration
-img_034.jpg,car,355.0,226.0,236.0,84.0,0,no,calibration
+img_034.jpg,car,355.0,226.0,236.0,84.0,1,no,calibration
 img_034.jpg,rider,640.0,225.0,41.0,80.0,0,no,calibration
 img_034.jpg,rider,768.0,226.0,40.0,79.0,0,no,calibration
 img_034.jpg,motorcycle,280.0,233.0,30.0,53.0,0,no,calibration
@@ -473,5 +473,5 @@ img_040.jpg,three_wheeler,72.0,92.0,119.0,149.0,1,no,calibration
 img_040.jpg,car,16.0,187.0,944.0,453.0,1,yes,calibration
 img_040.jpg,bus,100.0,0.0,370.0,114.0,2,yes,calibration
 img_040.jpg,rider,443.0,129.0,78.0,139.0,1,no,calibration
-img_040.jpg,bus,0.0,112.0,76.0,104.0,0,no,calibration
+img_040.jpg,bus,0.0,112.0,76.0,104.0,0,yes,calibration
 img_040.jpg,rider,482.0,106.0,347.0,534.0,0,yes,calibration

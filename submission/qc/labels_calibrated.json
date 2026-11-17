@@ -1088,10 +1088,10 @@
       "bbox": [
         436.0,
         32.0,
-        446.0,
+        264.0,
         564.0
       ],
-      "area": 251544.0,
+      "area": 148896.0,
       "iscrowd": 0,
       "attributes": {
         "occluded_level": "2",
@@ -6126,12 +6126,12 @@
       "image_id": 25,
       "category_id": 10,
       "bbox": [
-        20.0,
+        200.0,
         358.0,
-        428.0,
+        248.0,
         54.0
       ],
-      "area": 23112.0,
+      "area": 13392.0,
       "iscrowd": 0,
       "attributes": {
         "occluded_level": "0",
@@ -7826,7 +7826,7 @@
       "area": 19824.0,
       "iscrowd": 0,
       "attributes": {
-        "occluded_level": "0",
+        "occluded_level": "1",
         "truncated": "no",
         "can_review": false
       }
@@ -9429,7 +9429,7 @@
       "iscrowd": 0,
       "attributes": {
         "occluded_level": "0",
-        "truncated": "no",
+        "truncated": "yes",
         "can_review": false
       }
     },
