@@ -4,7 +4,7 @@
     "guideline_gap": 0,
     "data_problem": 0
   },
-  "decision": "HOLD",
+  "decision": "RELEASE",
   "labels_sha256": "a3f8090df55764883aa3c7c1e7278a64cc5798d7b0e59b1a7d37fb8211e1b8b5",
-  "review_sha256": "9518178fab9141c3461ec1770fcc71907574766c91629c1fd9bd6210e1952c53"
+  "review_sha256": "03b860082140e2fd988d60d4e48d6aecb556fde74c99d11e076d26057e769a9f"
 }
